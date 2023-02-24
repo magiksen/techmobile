@@ -85,7 +85,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="lni lni-fresh-juice"></i>
 						</div>
-						<div class="menu-title">Gestión de productos</div>
+						<div class="menu-title">Productos</div>
 					</a>
 					<ul>
 						@if(Auth::user()->can('product.list'))
@@ -106,7 +106,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="lni lni-gallery"></i>
 						</div>
-						<div class="menu-title">Gestión de Sliders</div>
+						<div class="menu-title">Sliders</div>
 					</a>
 					<ul>
 						@if(Auth::user()->can('slider.list'))
@@ -127,7 +127,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="lni lni-image"></i>
 						</div>
-						<div class="menu-title">Gestión de Banners</div>
+						<div class="menu-title">Banners</div>
 					</a>
 					<ul>
 						@if(Auth::user()->can('ads.list'))
@@ -146,7 +146,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="lni lni-invention"></i>
 						</div>
-						<div class="menu-title">Sistema de cupónes</div>
+						<div class="menu-title">Cupónes</div>
 					</a>
 					<ul>
 						@if(Auth::user()->can('coupon.list'))
@@ -166,7 +166,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="lni lni-map"></i>
 						</div>
-						<div class="menu-title">Área de envío</div>
+						<div class="menu-title">Envíos</div>
 					</a>
 					<ul>
 						<li> <a href="{{ route('all.division') }}"><i class="bx bx-right-arrow-alt"></i>Parroquias</a>
@@ -187,7 +187,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='lni lni-network'></i>
 						</div>
-						<div class="menu-title">Gestión de proveedores </div>
+						<div class="menu-title">Proveedores</div>
 					</a>
 					<ul>
 						<li> <a href="{{ route('inactive.vendor') }}"><i class="bx bx-right-arrow-alt"></i>Proveedores inactivos</a>
@@ -204,7 +204,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class='bx bx-cart'></i>
 						</div>
-						<div class="menu-title">Gestión de pedidos </div>
+						<div class="menu-title">Pedidos</div>
 					</a>
 					<ul>
 						<li> <a href="{{ route('pending.order') }}"><i class="bx bx-right-arrow-alt"></i>Pedidos pendientes</a>
@@ -261,7 +261,7 @@
 					<a href="javascript:;" class="has-arrow">
 						<div class="parent-icon"><i class="lni lni-slideshare"></i>
 						</div>
-						<div class="menu-title">Gestión de usuarios</div>
+						<div class="menu-title">Usuarios</div>
 					</a>
 					<ul>
 						<li> <a href="{{ route('all-user') }}"><i class="bx bx-right-arrow-alt"></i>Usuarios</a>
@@ -298,7 +298,7 @@
 		<a href="javascript:;" class="has-arrow">
 			<div class="parent-icon"><i class="lni lni-indent-increase"></i>
 			</div>
-			<div class="menu-title">Gestión de reseñas</div>
+			<div class="menu-title">Reseñas</div>
 		</a>
 		<ul>
 			<li> <a href="{{ route('pending.review') }}"><i class="bx bx-right-arrow-alt"></i>Reseñas pendientes</a>
@@ -378,7 +378,7 @@
 					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon"><i class="lni lni-user"></i>
 						</div>
-						<div class="menu-title">Gestión de Administradores </div>
+						<div class="menu-title">Administradores </div>
 					</a>
 					<ul>
 						<li> <a href="{{ route('all.admin') }}"><i class="bx bx-right-arrow-alt"></i>Administradores</a>
