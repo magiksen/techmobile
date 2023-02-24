@@ -12,7 +12,7 @@ class ReportController extends Controller
 {
     public function ReportView(){
         return view('backend.report.report_view');
-    } // End Method 
+    } // End Method
 
 
     public function SearchByDate(Request $request){
@@ -23,7 +23,7 @@ class ReportController extends Controller
         $orders = Order::where('order_date',$formatDate)->latest()->get();
         return view('backend.report.report_by_date',compact('orders','formatDate'));
 
-    }// End Method 
+    }// End Method
 
 
     public function SearchByMonth(Request $request){
@@ -34,31 +34,31 @@ class ReportController extends Controller
         $orders = Order::where('order_month',$month)->where('order_year',$year)->latest()->get();
         return view('backend.report.report_by_month',compact('orders','month','year'));
 
-    }// End Method 
+    }// End Method
 
 
- public function SearchByYear(Request $request){ 
+ public function SearchByYear(Request $request){
 
         $year = $request->year;
 
         $orders = Order::where('order_year',$year)->latest()->get();
         return view('backend.report.report_by_year',compact('orders','year'));
 
-    }// End Method 
+    }// End Method
 
 
     public function OrderByUser(){
         $users = User::where('role','user')->latest()->get();
         return view('backend.report.report_by_user',compact('users'));
 
-    }// End Method 
+    }// End Method
 
     public function SearchByUser(Request $request){
-        $users = $request->user;
-        $orders = Order::where('user_id',$users)->latest()->get();
+        $userID = $request->user;
+        $users = User::find($userID);
+        $orders = Order::where('user_id',$userID)->latest()->get();
         return view('backend.report.report_by_user_show',compact('orders','users'));
-    }// End Method 
+    }// End Method
 
 
 }
- 
