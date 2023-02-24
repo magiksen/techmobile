@@ -61,8 +61,8 @@
                     <label class="form-check-label" for="flexSwitchCheckChecked">Recuerdame</label>
                 </div>
             </div>
-            <div class="col-md-6 text-end"> <a href="authentication-forgot-password.html">Olvidaste la contraseña ?</a>
-            </div>
+{{--            <div class="col-md-6 text-end"> <a href="authentication-forgot-password.html">Olvidaste la contraseña ?</a>--}}
+{{--            </div>--}}
             <div class="col-12">
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary"><i class="bx bxs-lock-open"></i>Entrar</button>
