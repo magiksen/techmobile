@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-   404 Page 
+   404 Page
 @endsection
 
 
@@ -14,10 +14,10 @@
                         <h1 class="display-2 mb-30">Page Not Found</h1>
                         <p class="font-lg text-grey-700 mb-30">
                             The link you clicked may be broken or the page may have been removed.<br />
-                            visit the <a href="index.html"> <span> Homepage</span></a> or <a href="page-contact.html"><span>Contact us</span></a> about the problem
+                            visit the <a href="#"> <span> Homepage</span></a> or <a href="page-contact.html"><span>Contact us</span></a> about the problem
                         </p>
                         <div class="search-form">
-                             
+
                         </div>
                         <a class="btn btn-default submit-auto-width font-xs hover-up mt-30" href="{{ url('/') }}"><i class="fi-rs-home mr-5"></i> Back To Home Page</a>
                     </div>

@@ -8,13 +8,13 @@
  <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <a href="#" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
                     <span></span> <a href="shop-grid-right.html">
                     	@foreach($breadcat as $cat)
                     	{{ $cat->blog_category_name }}
                     	@endforeach
-                    
-                </a> 
+
+                </a>
                      <span></span> {{ $blogdetails->post_title }}
                 </div>
             </div>
@@ -29,7 +29,7 @@
                                     <div class="single-header style-2">
                                         <div class="row">
                                             <div class="col-xl-10 col-lg-12 m-auto">
-          
+
             <h2 class="mb-10">{{ $blogdetails->post_title }}</h2>
             <div class="single-header-meta">
                 <div class="entry-meta meta-1 font-xs mt-15 mb-15">
@@ -45,7 +45,7 @@
                         <li class="mr-5">
                             <a href="#"><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-bookmark.svg') }}" alt="" /></a>
                         </li>
-                         
+
                     </ul>
                 </div>
             </div>
@@ -143,9 +143,9 @@
     <a href="#" class="font-heading text-brand">Sienna</a>
   </div>
    <div class="desc">
-    <div class="d-flex justify-content-between mb-10">  
+    <div class="d-flex justify-content-between mb-10">
         <div class="d-flex align-items-center">      <span class="font-xs text-muted">December 4, 2022 at 3:12 pm </span>                                             </div>
-           <div class="product-rate d-inline-block">   
+           <div class="product-rate d-inline-block">
             <div class="product-rating" style="width: 80%"></div>                       </div>  </div>
   <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt? <a href="#" class="reply">Reply</a></p>
  </div>
@@ -158,9 +158,9 @@
    <a href="#" class="font-heading text-brand">Brenna</a>
      </div>
  <div class="desc">
-    <div class="d-flex justify-content-between mb-10">   <div class="d-flex align-items-cer">                                                                                     </div>   
+    <div class="d-flex justify-content-between mb-10">   <div class="d-flex align-items-cer">                                                                                     </div>
       <div class="product-rate d-inline-block">
-       <div class="product-rating" style="width: 80%"></div>                           
+       <div class="product-rating" style="width: 80%"></div>
            </div>
    </div>
     <p class="mb-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, suscipit exercitationem accusantium obcaecati quos voluptate nesciunt facilis itaque modi commodi dignissimos sequi repudiandae minus ab deleniti totam officia id incidunt? <a href="#" class="reply">Reply</a></p>
@@ -216,7 +216,7 @@
         </ul>
                                     </div>
                                     <!-- Product sidebar Widget -->
-                                     
+
                                     <div class="banner-img wow fadeIn mb-50 animated d-lg-block d-none">
                                         <img src="{{ asset('frontend/assets/imgs/banner/banner-11.png') }}" alt="" />
                                         <div class="banner-text">
