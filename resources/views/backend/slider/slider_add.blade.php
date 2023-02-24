@@ -3,38 +3,38 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<div class="page-content"> 
+<div class="page-content">
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Add Slider </div>
+					<div class="breadcrumb-title pe-3">Sliders </div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								<li class="breadcrumb-item"><a href="{{ url('/all/slider') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Add Slider </li>
+								<li class="breadcrumb-item active" aria-current="page">Agregar Slider </li>
 							</ol>
 						</nav>
 					</div>
 					<div class="ms-auto">
-				 
+
 					</div>
 				</div>
 				<!--end breadcrumb-->
 				<div class="container">
 					<div class="main-body">
 						<div class="row">
-							 
+
 <div class="col-lg-10">
 	<div class="card">
 		<div class="card-body">
 
 		<form id="myForm" method="post" action="{{ route('store.slider') }}" enctype="multipart/form-data" >
 			@csrf
-		 
+
 			<div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">Slider Title</h6>
+					<h6 class="mb-0">Titulo</h6>
 				</div>
 				<div class="form-group col-sm-9 text-secondary">
 					<input type="text" name="slider_title" class="form-control"   />
@@ -43,17 +43,17 @@
 
 			<div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">Short Title</h6>
+					<h6 class="mb-0">Titulo corto</h6>
 				</div>
 				<div class="form-group col-sm-9 text-secondary">
 					<input type="text" name="short_title" class="form-control"   />
 				</div>
 			</div>
-			  
+
 
 			<div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">Slider Image  </h6>
+					<h6 class="mb-0">Imagen</h6>
 				</div>
 				<div class="col-sm-9 text-secondary">
 					<input type="file" name="slider_image" class="form-control"  id="image"   />
@@ -78,7 +78,7 @@
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-9 text-secondary">
-					<input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+					<input type="submit" class="btn btn-primary px-4" value="Guardar cambios" />
 				</div>
 			</div>
 		</div>
@@ -88,7 +88,7 @@
 
 
 	</div>
-	 
+
 
 
 
@@ -107,20 +107,20 @@
             rules: {
                 slider_title: {
                     required : true,
-                }, 
+                },
                 short_title: {
                     required : true,
                 },
             },
             messages :{
                 slider_title: {
-                    required : 'Please Enter Slider Title',
+                    required : 'Ingresa un titulo',
                 },
                 short_title: {
-                    required : 'Please Enter Short Title',
+                    required : 'Ingresa un titulo corto',
                 },
             },
-            errorElement : 'span', 
+            errorElement : 'span',
             errorPlacement: function (error,element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
@@ -133,7 +133,7 @@
             },
         });
     });
-    
+
 </script>
 
 
