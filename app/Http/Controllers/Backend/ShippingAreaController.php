@@ -14,17 +14,17 @@ class ShippingAreaController extends Controller
     public function AllDivision(){
         $division = ShipDivision::latest()->get();
         return view('backend.ship.division.division_all',compact('division'));
-    } // End Method 
+    } // End Method
 
     public function AddDivision(){
         return view('backend.ship.division.division_add');
-    }// End Method 
+    }// End Method
 
 
-    public function StoreDivision(Request $request){ 
+    public function StoreDivision(Request $request){
 
-        ShipDivision::insert([ 
-            'division_name' => $request->division_name, 
+        ShipDivision::insert([
+            'division_name' => $request->division_name,
         ]);
 
        $notification = array(
@@ -32,9 +32,9 @@ class ShippingAreaController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.division')->with($notification); 
+        return redirect()->route('all.division')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
      public function EditDivision($id){
@@ -42,7 +42,7 @@ class ShippingAreaController extends Controller
         $division = ShipDivision::findOrFail($id);
         return view('backend.ship.division.division_edit',compact('division'));
 
-    }// End Method 
+    }// End Method
 
 
      public function UpdateDivision(Request $request){
@@ -58,10 +58,10 @@ class ShippingAreaController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.division')->with($notification); 
+        return redirect()->route('all.division')->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
 
     public function DeleteDivision($id){
@@ -73,10 +73,10 @@ class ShippingAreaController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
     /////////////// District CRUD ///////////////
 
@@ -84,18 +84,18 @@ class ShippingAreaController extends Controller
      public function AllDistrict(){
         $district = ShipDistricts::latest()->get();
         return view('backend.ship.district.district_all',compact('district'));
-    } // End Method 
+    } // End Method
 
     public function AddDistrict(){
         $division = ShipDivision::orderBy('division_name','ASC')->get();
         return view('backend.ship.district.district_add',compact('division'));
-    }// End Method 
+    }// End Method
 
 
-public function StoreDistrict(Request $request){ 
+public function StoreDistrict(Request $request){
 
-        ShipDistricts::insert([ 
-            'division_id' => $request->division_id, 
+        ShipDistricts::insert([
+            'division_id' => $request->division_id,
             'district_name' => $request->district_name,
         ]);
 
@@ -104,9 +104,9 @@ public function StoreDistrict(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.district')->with($notification); 
+        return redirect()->route('all.district')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
       public function EditDistrict($id){
@@ -114,7 +114,7 @@ public function StoreDistrict(Request $request){
         $district = ShipDistricts::findOrFail($id);
         return view('backend.ship.district.district_edit',compact('district','division'));
 
-    }// End Method 
+    }// End Method
 
 
     public function UpdateDistrict(Request $request){
@@ -122,7 +122,7 @@ public function StoreDistrict(Request $request){
         $district_id = $request->id;
 
          ShipDistricts::findOrFail($district_id)->update([
-             'division_id' => $request->division_id, 
+             'division_id' => $request->division_id,
             'district_name' => $request->district_name,
         ]);
 
@@ -131,10 +131,10 @@ public function StoreDistrict(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.district')->with($notification); 
+        return redirect()->route('all.district')->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
 
      public function DeleteDistrict($id){
@@ -146,10 +146,10 @@ public function StoreDistrict(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
   /////////////// State CRUD ///////////////
 
@@ -157,28 +157,28 @@ public function StoreDistrict(Request $request){
      public function AllState(){
         $state = ShipState::latest()->get();
         return view('backend.ship.state.state_all',compact('state'));
-    } // End Method 
+    } // End Method
 
 
     public function AddState(){
         $division = ShipDivision::orderBy('division_name','ASC')->get();
         $district = ShipDistricts::orderBy('district_name','ASC')->get();
          return view('backend.ship.state.state_add',compact('division','district'));
-    }// End Method 
+    }// End Method
 
 
     public function GetDistrict($division_id){
         $dist = ShipDistricts::where('division_id',$division_id)->orderBy('district_name','ASC')->get();
             return json_encode($dist);
 
-    }// End Method 
+    }// End Method
 
 
-    public function StoreState(Request $request){ 
+    public function StoreState(Request $request){
 
-        ShipState::insert([ 
-            'division_id' => $request->division_id, 
-            'district_id' => $request->district_id, 
+        ShipState::insert([
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
             'state_name' => $request->state_name,
         ]);
 
@@ -187,9 +187,9 @@ public function StoreDistrict(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.state')->with($notification); 
+        return redirect()->route('all.state')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
         public function EditState($id){
@@ -197,7 +197,7 @@ public function StoreDistrict(Request $request){
         $district = ShipDistricts::orderBy('district_name','ASC')->get();
         $state = ShipState::findOrFail($id);
          return view('backend.ship.state.state_edit',compact('division','district','state'));
-    }// End Method 
+    }// End Method
 
 
      public function UpdateState(Request $request){
@@ -205,8 +205,8 @@ public function StoreDistrict(Request $request){
         $state_id = $request->id;
 
          ShipState::findOrFail($state_id)->update([
-            'division_id' => $request->division_id, 
-            'district_id' => $request->district_id, 
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
             'state_name' => $request->state_name,
         ]);
 
@@ -215,10 +215,10 @@ public function StoreDistrict(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.state')->with($notification); 
+        return redirect()->route('all.state')->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
  public function DeleteState($id){
 
@@ -229,12 +229,11 @@ public function StoreDistrict(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
 
 
 }
- 

@@ -169,12 +169,12 @@
 						<div class="menu-title">Envíos</div>
 					</a>
 					<ul>
-						<li> <a href="{{ route('all.division') }}"><i class="bx bx-right-arrow-alt"></i>Parroquias</a>
+						<li> <a href="{{ route('all.division') }}"><i class="bx bx-right-arrow-alt"></i>Estados</a>
 						</li>
 						<li> <a href="{{ route('all.district') }}"><i class="bx bx-right-arrow-alt"></i>Municipios</a>
 						</li>
 
-						<li> <a href="{{ route('all.state') }}"><i class="bx bx-right-arrow-alt"></i>Estados</a>
+						<li> <a href="{{ route('all.state') }}"><i class="bx bx-right-arrow-alt"></i>Parroquias</a>
 						</li>
 
 					</ul>
