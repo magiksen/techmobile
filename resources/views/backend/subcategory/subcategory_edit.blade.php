@@ -3,28 +3,28 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-<div class="page-content"> 
+<div class="page-content">
 				<!--breadcrumb-->
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-					<div class="breadcrumb-title pe-3">Edit SubCategory </div>
+					<div class="breadcrumb-title pe-3">Subcategorias</div>
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+								<li class="breadcrumb-item"><a href="{{ url('/all/subcategory') }}"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Edit SubCategory </li>
+								<li class="breadcrumb-item active" aria-current="page">Editar Subcategoria</li>
 							</ol>
 						</nav>
 					</div>
 					<div class="ms-auto">
-				 
+
 					</div>
 				</div>
 				<!--end breadcrumb-->
 				<div class="container">
 					<div class="main-body">
 						<div class="row">
-							 
+
 <div class="col-lg-10">
 	<div class="card">
 		<div class="card-body">
@@ -33,40 +33,40 @@
 			@csrf
 
 			<input type="hidden" name="id" value="{{ $subcategory->id }}">
-		 
+
 			<div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">Category Name</h6>
+					<h6 class="mb-0">Categoría</h6>
 				</div>
 				<div class="form-group col-sm-9 text-secondary">
 	 	<select name="category_id" class="form-select mb-3" aria-label="Default select example">
-			 <option selected="">Open this select menu</option>
+			 <option selected="">Seleccionar categoría</option>
 
 			 @foreach($categories as $category)
 		 	<option value="{{ $category->id }}" {{ $category->id == $subcategory->category_id ? 'selected' : '' }} >{{ $category->category_name }}</option>
 		 	@endforeach
-		 
+
 								</select>
 				</div>
 			</div>
-			  
- 
+
+
            <div class="row mb-3">
 				<div class="col-sm-3">
-					<h6 class="mb-0">SubCategory Name</h6>
+					<h6 class="mb-0">Subcategoria</h6>
 				</div>
 				<div class="form-group col-sm-9 text-secondary">
 					<input type="text" name="subcategory_name" class="form-control" value="{{ $subcategory->subcategory_name }}"   />
 				</div>
 			</div>
-			  
+
 
 
 
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-9 text-secondary">
-					<input type="submit" class="btn btn-primary px-4" value="Save Changes" />
+					<input type="submit" class="btn btn-primary px-4" value="Guardar cambios" />
 				</div>
 			</div>
 		</div>
@@ -76,7 +76,7 @@
 
 
 	</div>
-	 
+
 
 
 
@@ -95,14 +95,14 @@
             rules: {
                 subcategory_name: {
                     required : true,
-                }, 
+                },
             },
             messages :{
                 subcategory_name: {
-                    required : 'Please Enter SubCategory Name',
+                    required : 'Ingresa una Subcategoria',
                 },
             },
-            errorElement : 'span', 
+            errorElement : 'span',
             errorPlacement: function (error,element) {
                 error.addClass('invalid-feedback');
                 element.closest('.form-group').append(error);
@@ -115,12 +115,12 @@
             },
         });
     });
-    
+
 </script>
 
 
 
- 
+
 
 
 @endsection
