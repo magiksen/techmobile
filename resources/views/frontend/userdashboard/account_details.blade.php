@@ -1,4 +1,4 @@
-@extends('dashboard') 
+@extends('dashboard')
 @section('user')
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -6,8 +6,8 @@
   <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> User Account
+                    <a href="{{ route('homepage') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Inicio</a>
+                    <span></span> Cuenta de usuario
                 </div>
             </div>
         </div>
@@ -29,11 +29,11 @@
 <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
  <div class="card">
         <div class="card-header">
-            <h5>Account Details</h5>
+            <h5>Detalles de la cuenta</h5>
         </div>
         <div class="card-body">
-            
-            
+
+
 
     <form method="post" action="{{ route('user.profile.store') }}" enctype="multipart/form-data" >
             @csrf
@@ -41,11 +41,11 @@
 
 <div class="row">
     <div class="form-group col-md-6">
-        <label>User Name <span class="required">*</span></label>
+        <label>Nombre de usuario <span class="required">*</span></label>
         <input required="" class="form-control" name="username" type="text" value="{{ $userData->username }}" />
     </div>
     <div class="form-group col-md-6">
-        <label>Full Name <span class="required">*</span></label>
+        <label>Nombre completo <span class="required">*</span></label>
         <input required="" class="form-control" name="name" value="{{ $userData->name }}" />
     </div>
     <div class="form-group col-md-12">
@@ -53,15 +53,15 @@
         <input required="" class="form-control" name="email" type="text" value="{{ $userData->email }}" />
     </div>
     <div class="form-group col-md-12">
-        <label>Phone <span class="required">*</span></label>
+        <label>Teléfono <span class="required">*</span></label>
         <input required="" class="form-control" name="phone" type="text" value="{{ $userData->phone }}" />
     </div>
     <div class="form-group col-md-12">
-        <label>Address <span class="required">*</span></label>
+        <label>Dirección <span class="required">*</span></label>
         <input required="" class="form-control" name="address" type="text" value="{{ $userData->address }}" />
     </div>
     <div class="form-group col-md-12">
-        <label>User Photo <span class="required">*</span></label>
+        <label>Foto <span class="required">*</span></label>
         <input class="form-control" name="photo" type="file"  id="image" />
     </div>
 
@@ -71,15 +71,15 @@
     </div>
 
 
-    
+
     <div class="col-md-12">
-        <button type="submit" class="btn btn-fill-out submit font-weight-bold" name="submit" value="Submit">Save Change</button>
+        <button type="submit" class="btn btn-fill-out submit font-weight-bold" name="submit" value="Submit">Guardar cambios</button>
     </div>
 </div>
             </form>
         </div>
     </div>
-</div>  
+</div>
 
   </div>
    </div>
