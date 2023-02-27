@@ -150,7 +150,7 @@
                     <h6 class="text-muted">Subtotal</h6>
                 </td>
                 <td class="cart_total_amount">
-                    <h4 class="text-brand text-end">${{ number_format($cartTotal, 2, ',', '.') }}</h4>
+                    <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
                 </td>
             </tr>
 
@@ -189,7 +189,7 @@
                     <h6 class="text-muted">Total </h6>
                 </td>
                 <td class="cart_total_amount">
-                    <h4 class="text-brand text-end">${{ number_format($cartTotal, 2, ',', '.') }}</h4>
+                    <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
                 </td>
             </tr>
 

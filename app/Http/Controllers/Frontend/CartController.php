@@ -11,7 +11,7 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Auth;
-  
+
 class CartController extends Controller
 {
     public function AddToCart(Request $request, $id){
@@ -125,7 +125,7 @@ class CartController extends Controller
 
         return response()->json(array(
             'carts' => $carts,
-            'cartQty' => $cartQty,  
+            'cartQty' => $cartQty,
             'cartTotal' => $cartTotal
 
         ));
@@ -155,7 +155,7 @@ class CartController extends Controller
 
         return response()->json(array(
             'carts' => $carts,
-            'cartQty' => $cartQty,  
+            'cartQty' => $cartQty,
             'cartTotal' => $cartTotal
 
         ));
@@ -169,13 +169,13 @@ class CartController extends Controller
          if(Session::has('coupon')){
             $coupon_name = Session::get('coupon')['coupon_name'];
             $coupon = Coupon::where('coupon_name',$coupon_name)->first();
-           
+
            Session::put('coupon',[
-                'coupon_name' => $coupon->coupon_name, 
-                'coupon_discount' => $coupon->coupon_discount, 
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100), 
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
                 'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100 )
-            ]); 
+            ]);
         }
 
 
@@ -192,13 +192,13 @@ class CartController extends Controller
         if(Session::has('coupon')){
             $coupon_name = Session::get('coupon')['coupon_name'];
             $coupon = Coupon::where('coupon_name',$coupon_name)->first();
-           
+
            Session::put('coupon',[
-                'coupon_name' => $coupon->coupon_name, 
-                'coupon_discount' => $coupon->coupon_discount, 
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100), 
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
                 'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100 )
-            ]); 
+            ]);
         }
 
 
@@ -215,13 +215,13 @@ class CartController extends Controller
           if(Session::has('coupon')){
             $coupon_name = Session::get('coupon')['coupon_name'];
             $coupon = Coupon::where('coupon_name',$coupon_name)->first();
-           
+
            Session::put('coupon',[
-                'coupon_name' => $coupon->coupon_name, 
-                'coupon_discount' => $coupon->coupon_discount, 
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100), 
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
                 'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100 )
-            ]); 
+            ]);
         }
 
         return response()->json('Increment');
@@ -236,14 +236,14 @@ class CartController extends Controller
 
         if ($coupon) {
             Session::put('coupon',[
-                'coupon_name' => $coupon->coupon_name, 
-                'coupon_discount' => $coupon->coupon_discount, 
-                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100), 
+                'coupon_name' => $coupon->coupon_name,
+                'coupon_discount' => $coupon->coupon_discount,
+                'discount_amount' => round(Cart::total() * $coupon->coupon_discount/100),
                 'total_amount' => round(Cart::total() - Cart::total() * $coupon->coupon_discount/100 )
             ]);
 
             return response()->json(array(
-                'validity' => true,                
+                'validity' => true,
                 'success' => 'Coupon Applied Successfully'
 
             ));
@@ -259,19 +259,19 @@ class CartController extends Controller
     public function CouponCalculation(){
 
         if (Session::has('coupon')) {
-            
+
             return response()->json(array(
              'subtotal' => Cart::total(),
              'coupon_name' => session()->get('coupon')['coupon_name'],
              'coupon_discount' => session()->get('coupon')['coupon_discount'],
              'discount_amount' => session()->get('coupon')['discount_amount'],
-             'total_amount' => session()->get('coupon')['total_amount'], 
+             'total_amount' => session()->get('coupon')['total_amount'],
             ));
         }else{
             return response()->json(array(
                 'total' => Cart::total(),
             ));
-        } 
+        }
     }// End Method
 
     public function CouponRemove(){
@@ -285,8 +285,8 @@ class CartController extends Controller
     public function CheckoutCreate(){
 
         if (Auth::check()) {
-           
-            if (Cart::total() > 0) { 
+
+            if (Cart::total() > 0) {
 
         $carts = Cart::content();
         $cartQty = Cart::count();
@@ -296,7 +296,7 @@ class CartController extends Controller
 
         return view('frontend.checkout.checkout_view',compact('carts','cartQty','cartTotal','divisions'));
 
-               
+
             }else{
 
             $notification = array(
@@ -304,7 +304,7 @@ class CartController extends Controller
             'alert-type' => 'error'
         );
 
-        return redirect()->to('/')->with($notification); 
+        return redirect()->to('/')->with($notification);
             }
 
 
@@ -316,7 +316,7 @@ class CartController extends Controller
             'alert-type' => 'error'
         );
 
-        return redirect()->route('login')->with($notification); 
+        return redirect()->route('login')->with($notification);
         }
 
 
@@ -326,4 +326,3 @@ class CartController extends Controller
 
 
 }
- 
