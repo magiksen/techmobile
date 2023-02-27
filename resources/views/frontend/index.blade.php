@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-    Home Easy Multi Vendor Shop
+    TECHMOBILE
 @endsection
 
      @include('frontend.home.home_slider')
