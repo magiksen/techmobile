@@ -1,14 +1,14 @@
 @extends('frontend.master_dashboard')
 @section('main')
 @section('title')
-   Checkout Page
+   Checkout
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
  <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
+                    <a href="{{ route('homepage') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Inicio</a>
                     <span></span> Checkout
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 <div class="col-lg-8 mb-40">
                     <h3 class="heading-2 mb-10">Checkout</h3>
                     <div class="d-flex justify-content-between">
-                        <h6 class="text-body">There are products in your cart</h6>
+                        <h6 class="text-body">Hay productos en tu carrito</h6>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <div class="col-lg-7">
 
     <div class="row">
-        <h4 class="mb-30">Billing Details</h4>
+        <h4 class="mb-30">Datos de facturación</h4>
         <form method="post" action="{{ route('checkout.store') }}">
         	@csrf
 
@@ -70,7 +70,7 @@
         </div>
                                 <div class="form-group col-lg-6">
 
-      <input required="" type="text" name="post_code" placeholder="Post Code *">
+      <input required="" type="text" name="post_code" placeholder="Código postal *">
                                 </div>
                             </div>
 
@@ -85,7 +85,7 @@
         </div>
     </div>
                                 <div class="form-group col-lg-6">
-      <input required="" type="text" name="shipping_address" placeholder="Address *" value="{{ Auth::user()->address }}">
+      <input required="" type="text" name="shipping_address" placeholder="Dirección *" value="{{ Auth::user()->address }}">
                                 </div>
                             </div>
 
@@ -94,7 +94,7 @@
 
 
                             <div class="form-group mb-30">
-        <textarea rows="5" placeholder="Additional information" name="notes"></textarea>
+        <textarea rows="5" placeholder="Información adicional" name="notes"></textarea>
                             </div>
 
 
@@ -107,7 +107,7 @@
 <div class="col-lg-5">
 <div class="border p-40 cart-totals ml-30 mb-50">
     <div class="d-flex align-items-end justify-content-between mb-30">
-        <h4>Your Order</h4>
+        <h4>Tu Pedido</h4>
 
     </div>
     <div class="divider-2 mb-30"></div>
@@ -130,7 +130,7 @@
                         <h6 class="text-muted pl-20 pr-20">x {{ $item->qty }}</h6>
                     </td>
                     <td>
-                        <h4 class="text-brand">${{ $item->price }}</h4>
+                        <h4 class="text-brand">${{ number_format($item->price, 2, ',', '.') }}</h4>
                     </td>
                 </tr>
                 @endforeach
@@ -150,13 +150,13 @@
                     <h6 class="text-muted">Subtotal</h6>
                 </td>
                 <td class="cart_total_amount">
-                    <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
+                    <h4 class="text-brand text-end">${{ number_format($cartTotal, 2, ',', '.') }}</h4>
                 </td>
             </tr>
 
             <tr>
                 <td class="cart_total_label">
-                    <h6 class="text-muted">Coupon Name</h6>
+                    <h6 class="text-muted">Nombre del cupón</h6>
                 </td>
                 <td class="cart_total_amount">
                     <h6 class="text-brand text-end">{{ session()->get('coupon')['coupon_name'] }} ( {{ session()->get('coupon')['coupon_discount'] }}% ) </h6>
@@ -165,7 +165,7 @@
 
               <tr>
                 <td class="cart_total_label">
-                    <h6 class="text-muted">Coupon Discount</h6>
+                    <h6 class="text-muted">Descuento del cupón</h6>
                 </td>
                 <td class="cart_total_amount">
                     <h4 class="text-brand text-end">${{ session()->get('coupon')['discount_amount'] }}</h4>
@@ -174,7 +174,7 @@
 
               <tr>
                 <td class="cart_total_label">
-                    <h6 class="text-muted">Grand Total</h6>
+                    <h6 class="text-muted">Total Descuento</h6>
                 </td>
                 <td class="cart_total_amount">
                     <h4 class="text-brand text-end">${{ session()->get('coupon')['total_amount'] }}</h4>
@@ -186,10 +186,10 @@
 
        <tr>
                 <td class="cart_total_label">
-                    <h6 class="text-muted">Grand Total </h6>
+                    <h6 class="text-muted">Total </h6>
                 </td>
                 <td class="cart_total_amount">
-                    <h4 class="text-brand text-end">${{ $cartTotal }}</h4>
+                    <h4 class="text-brand text-end">${{ number_format($cartTotal, 2, ',', '.') }}</h4>
                 </td>
             </tr>
 
@@ -210,7 +210,7 @@
     </div>
 </div>
     <div class="payment ml-30">
-        <h4 class="mb-30">Payment</h4>
+        <h4 class="mb-30">Pago</h4>
         <div class="payment_option">
             <div class="custome-radio">
 
@@ -222,12 +222,12 @@
 
                 <input class="form-check-input" required="" type="radio" name="payment_option" value="cash" id="exampleRadios4" checked="">
 
-                <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Cash on delivery</label>
+                <label class="form-check-label" for="exampleRadios4" data-bs-toggle="collapse" data-target="#checkPayment" aria-controls="checkPayment">Pago en entrega</label>
             </div>
             <div class="custome-radio">
                 <input class="form-check-input" value="card" required="" type="radio" name="payment_option" id="exampleRadios5" checked="">
 
-                <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Online Getway</label>
+                <label class="form-check-label" for="exampleRadios5" data-bs-toggle="collapse" data-target="#paypal" aria-controls="paypal">Pago online</label>
             </div>
         </div>
         <div class="payment-logo d-flex">
@@ -236,7 +236,7 @@
             <img class="mr-15" src="{{ asset('frontend/assets/imgs/theme/icons/payment-master.svg') }}" alt="">
             <img src="{{ asset('frontend/assets/imgs/theme/icons/payment-zapper.svg') }}" alt="">
         </div>
-        <button type="submit" class="btn btn-fill-out btn-block mt-30">Place an Order<i class="fi-rs-sign-out ml-15"></i></button>
+        <button type="submit" class="btn btn-fill-out btn-block mt-30">Realizar pedido<i class="fi-rs-sign-out ml-15"></i></button>
     </div>
                 </div>
             </div>
