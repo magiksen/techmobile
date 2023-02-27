@@ -15,7 +15,7 @@
                                 <h4>
                                    {{ $item->banner_title }}
                                 </h4>
-                                <a href="{{ $item->banner_url }}" class="btn btn-xs">Shop Now <i class="fi-rs-arrow-small-right"></i></a>
+                                <a href="{{ $item->banner_url }}" class="btn btn-xs">Comprar ahora <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>

@@ -127,14 +127,14 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 
                     @if($product->discount_price == NULL)
                      <div class="product-price">
-                        <span>${{ $product->selling_price }}</span>
+                        <span>${{ number_format($product->selling_price, 2, ',', '.') }}</span>
 
                     </div>
 
                     @else
                     <div class="product-price">
-                        <span>${{ $product->discount_price }}</span>
-                        <span class="old-price">${{ $product->selling_price }}</span>
+                        <span>${{ number_format($product->discount_price, 2, ',', '.') }}</span>
+                        <span class="old-price">${{ number_format($product->selling_price, 2, ',', '.') }}</span>
                     </div>
                     @endif
 
@@ -246,10 +246,9 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
                 </div>
                 <div>
                     @if($product->vendor_id == NULL)
-<span class="font-small text-muted"><a href="#">Propio</a></span>
+                    <span class="font-small text-muted"><a href="#">Propio</a></span>
                     @else
-  <span class="font-small text-muted"><a href="{{ route('vendor.details',$product->vendor_id) }}">{{ $product['vendor']['name'] }}</a></span>
-
+                    <span class="font-small text-muted"><a href="{{ route('vendor.details',$product->vendor_id) }}">{{ $product['vendor']['name'] }}</a></span>
                     @endif
 
 
@@ -259,14 +258,14 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 
                     @if($product->discount_price == NULL)
                      <div class="product-price">
-                        <span>${{ $product->selling_price }}</span>
+                        <span>${{ number_format($product->selling_price, 2, ',', '.') }}</span>
 
                     </div>
 
                     @else
                     <div class="product-price">
-                        <span>${{ $product->discount_price }}</span>
-                        <span class="old-price">${{ $product->selling_price }}</span>
+                        <span>${{ number_format($product->discount_price, 2, ',', '.') }}</span>
+                        <span class="old-price">${{ number_format($product->selling_price, 2, ',', '.') }}</span>
                     </div>
                     @endif
 
@@ -395,14 +394,14 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 
                     @if($product->discount_price == NULL)
                      <div class="product-price">
-                        <span>${{ $product->selling_price }}</span>
+                        <span>${{ number_format($product->selling_price, 2, ',', '.') }}</span>
 
                     </div>
 
                     @else
                     <div class="product-price">
-                        <span>${{ $product->discount_price }}</span>
-                        <span class="old-price">${{ $product->selling_price }}</span>
+                        <span>${{ number_format($product->discount_price, 2, ',', '.') }}</span>
+                        <span class="old-price">${{ number_format($product->selling_price, 2, ',', '.') }}</span>
                     </div>
                     @endif
 
@@ -476,14 +475,14 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
             </div>
              @if($item->discount_price == NULL)
                      <div class="product-price">
-                        <span>${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->selling_price, 2, ',', '.') }}</span>
 
                     </div>
 
                     @else
                     <div class="product-price">
-                        <span>${{ $item->discount_price }}</span>
-                        <span class="old-price">${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->discount_price, 2, ',', '.') }}</span>
+                        <span class="old-price">${{ number_format($item->selling_price, 2, ',', '.') }}</span>
                     </div>
                     @endif
         </div>
@@ -532,14 +531,14 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
             </div>
              @if($item->discount_price == NULL)
                      <div class="product-price">
-                        <span>${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->selling_price, 2, ',', '.') }}</span>
 
                     </div>
 
                     @else
                     <div class="product-price">
-                        <span>${{ $item->discount_price }}</span>
-                        <span class="old-price">${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->discount_price, 2, ',', '.') }}</span>
+                        <span class="old-price">${{ number_format($item->selling_price, 2, ',', '.') }}</span>
                     </div>
                     @endif
         </div>
@@ -584,14 +583,14 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
             </div>
              @if($item->discount_price == NULL)
                      <div class="product-price">
-                        <span>${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->selling_price, 2, ',', '.') }}</span>
 
                     </div>
 
                     @else
                     <div class="product-price">
-                        <span>${{ $item->discount_price }}</span>
-                        <span class="old-price">${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->discount_price, 2, ',', '.') }}</span>
+                        <span class="old-price">${{ number_format($item->selling_price, 2, ',', '.') }}}</span>
                     </div>
                     @endif
         </div>
@@ -603,7 +602,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
                         </div>
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-sm-5 mb-md-0 d-none d-xl-block wow animate__animated animate__fadeInUp" data-wow-delay=".3s">
-                        <h4 class="section-title style-1 mb-30 animated animated"> Special Deals </h4>
+                        <h4 class="section-title style-1 mb-30 animated animated"> Mas Ofertas </h4>
                         <div class="product-list-small animated animated">
 
 
@@ -636,14 +635,14 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
             </div>
              @if($item->discount_price == NULL)
                      <div class="product-price">
-                        <span>${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->selling_price, 2, ',', '.') }}</span>
 
                     </div>
 
                     @else
                     <div class="product-price">
-                        <span>${{ $item->discount_price }}</span>
-                        <span class="old-price">${{ $item->selling_price }}</span>
+                        <span>${{ number_format($item->discount_price, 2, ',', '.') }}</span>
+                        <span class="old-price">${{ number_format($item->selling_price, 2, ',', '.') }}</span>
                     </div>
                     @endif
         </div>

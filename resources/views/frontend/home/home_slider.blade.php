@@ -16,8 +16,8 @@
                                 </h1>
                                 <p class="mb-65">{{ $item->short_title }}</p>
                                 <form class="form-subcriber d-flex">
-                                    <input type="email" placeholder="Your emaill address" />
-                                    <button class="btn" type="submit">Subscribe</button>
+                                    <input type="email" placeholder="Ingresa tu email" />
+                                    <button class="btn" type="submit">Subscribir</button>
                                 </form>
                             </div>
                         </div>

@@ -7,13 +7,13 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
 <div class="container">
 
       <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
-                    <h3 class="">All Our Vendor List </h3>
+                    <h3 class="">Todos nuestros proveedores </h3>
                     <a class="show-all" href="{{ route('vendor.all') }}">
-                        All Vendors
+                        Proveedores
                         <i class="fi-rs-angle-right"></i>
                     </a>
                 </div>
- 
+
 
  <div class="row vendor-grid">
 
@@ -28,7 +28,7 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                                     </a>
                                 </div>
                                 <div class="product-badges product-badges-position product-badges-mrg">
-                                    <span class="hot">Mall</span>
+                                    <span class="hot">Techmobile</span>
                                 </div>
                             </div>
                             <div class="vendor-content-wrap">
@@ -41,20 +41,20 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                                         <div class="product-rate-cover">
               @php
  $products = App\Models\Product::where('vendor_id',$vendor->id)->get();
-              @endphp                             
-      
-                                           <span class="font-small total-product">{{ count($products) }} products</span>
+              @endphp
+
+                                           <span class="font-small total-product">{{ count($products) }} productos</span>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="vendor-info mb-30">
                                     <ul class="contact-infor text-muted">
-                                        
-                                        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Call Us:</strong><span>{{ $vendor->phone }}</span></li>
+
+                                        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Llamanos: </strong><span>{{ $vendor->phone }}</span></li>
                                     </ul>
                                 </div>
-  <a href="{{ route('vendor.details',$vendor->id) }}" class="btn btn-xs">Visit Store <i class="fi-rs-arrow-small-right"></i></a>
+  <a href="{{ route('vendor.details',$vendor->id) }}" class="btn btn-xs">Visitar tienda <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ $vendors = App\Models\User::where('status','active')->where('role','vendor')->or
                     @endforeach
 
 
-                   
-                
-                </div> 
+
+
+                </div>
             </div>
