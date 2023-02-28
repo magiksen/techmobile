@@ -1,4 +1,4 @@
-@extends('dashboard') 
+@extends('dashboard')
 @section('user')
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -8,8 +8,8 @@
   <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> Return Order Page
+                    <a href="{{ route('homepage') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Inicio</a>
+                    <span></span> Devoluciones
                 </div>
             </div>
         </div>
@@ -32,21 +32,21 @@
 <div class="tab-pane fade active show" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
     <div class="card">
         <div class="card-header">
-            <h3 class="mb-0">Your Orders</h3>
+            <h3 class="mb-0">Pedidos en devolución</h3>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table" style="background:#ddd;font-weight: 600;" >
                     <thead>
                         <tr>
-                            <th>Sl</th>
-                            <th>Date</th>
-                            <th>Totaly</th>
-                            <th>Payment</th>
-                            <th>Invoice</th>
-                            <th>Reason</th>
-                            <th>Status</th>
-                            <th>Actions</th>
+                            <th>#</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Tipo de pago</th>
+                            <th>Factura</th>
+                            <th>Razón</th>
+                            <th>Estatus</th>
+                            <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,16 +58,16 @@
             <td> {{ $order->payment_method }}</td>
             <td> {{ $order->invoice_no }}</td>
             <td> {{ $order->return_reason }}</td>
-            <td> 
+            <td>
 @if($order->return_order == 0)
-<span class="badge rounded-pill bg-warning">No Retrun Request</span>
+<span class="badge rounded-pill bg-warning">Sin solicitud</span>
 
 @elseif($order->return_order == 1)
-<span class="badge rounded-pill bg-danger">Pedding</span>
+<span class="badge rounded-pill bg-danger">Pendiente</span>
 
 @elseif($order->return_order == 2)
-<span class="badge rounded-pill bg-success">Success</span> 
- 
+<span class="badge rounded-pill bg-success">Completada</span>
+
 
 @endif
 
@@ -75,8 +75,8 @@
             </td>
 
 
-     <td><a href="{{ url('user/order_details/'.$order->id) }}" class="btn-sm btn-success"><i class="fa fa-eye"></i> View</a>
-     <a href="{{ url('user/invoice_download/'.$order->id) }}" class="btn-sm btn-danger"><i class="fa fa-download"></i> Invoice</a>
+     <td><a href="{{ url('user/order_details/'.$order->id) }}" class="btn-sm btn-success"><i class="fa fa-eye"></i> Ver</a>
+     <a href="{{ url('user/invoice_download/'.$order->id) }}" class="btn-sm btn-danger"><i class="fa fa-download"></i> Factura</a>
             </td>
         </tr>
         @endforeach
@@ -86,7 +86,7 @@
             </div>
         </div>
     </div>
-</div>  
+</div>
 
   </div>
    </div>
@@ -101,7 +101,7 @@
             </div>
         </div>
 
- 
+
 
 
 @endsection

@@ -225,7 +225,7 @@ $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderB
 
 
                     <div class="add-cart">
-                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Add </a>
+                        <a class="add" href="#"><i class="fi-rs-shopping-cart mr-5"></i>Agregar</a>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@
                     <div class="carausel-10-columns" id="carausel-10-columns">
 
                         @foreach($categories as $category)
-                        <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
+                        <div class="card-2 bg-9 wow animate__animated animate__fadeInUp" data-wow-delay=".1s" style="min-height: 200px;">
                             <figure class="img-hover-scale overflow-hidden">
    <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}"><img src="{{ asset($category->category_image ) }}" alt="" /></a>
                             </figure>

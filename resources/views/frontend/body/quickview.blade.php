@@ -6,10 +6,10 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12 col-xs-12 mb-md-0 mb-sm-5">
                             <div class="detail-gallery">
-                                
+
                                 <!-- MAIN SLIDES -->
           <img src=" " alt="product image" id="pimage" />
-       
+
                             </div>
                             <!-- End Gallery -->
                         </div>
@@ -19,10 +19,10 @@
                                <br>
 
 <div class="attr-detail attr-size mb-30" id="sizeArea">
- <strong class="mr-10" style="width:60px;">Size : </strong>
+ <strong class="mr-10" style="width:60px;">Talla : </strong>
          <select class="form-control unicase-form-control" id="size" name="size">
-            
-             
+
+
          </select>
      </div>
 
@@ -30,8 +30,8 @@
      <div class="attr-detail attr-size mb-30" id="colorArea">
  <strong class="mr-10" style="width:60px;">Color : </strong>
          <select class="form-control unicase-form-control" id="color" name="color">
-          
-            
+
+
          </select>
      </div>
 
@@ -45,7 +45,7 @@
 
       <span class="old-price font-md ml-15">$ </span>
        <span class="old-price font-md ml-15" id="oldprice">  </span>
-                
+
             </div>
         </div>
         <div class="detail-extralink mb-30">
@@ -57,7 +57,7 @@
             </div>
             <div class="product-extra-link2">
                 <input type="hidden" id="product_id">
-                <button type="submit" class="button button-add-to-cart" onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
+                <button type="submit" class="button button-add-to-cart" onclick="addToCart()"><i class="fi-rs-shopping-cart"></i>Agregar al carrito</button>
             </div>
         </div>
 
@@ -66,12 +66,12 @@
 
                 <div class="font-xs">
             <ul>
-                <li class="mb-5">Brand: <span class="text-brand" id="pbrand"> </span></li>
-                <li class="mb-5">Category:<span class="text-brand" id="pcategory"> </span></li>
-                 <li class="mb-5">Vendor:<span class="text-brand" id="pvendor_id"> </span></li>
+                <li class="mb-5">Marca: <span class="text-brand" id="pbrand"> </span></li>
+                <li class="mb-5">Categoría:<span class="text-brand" id="pcategory"> </span></li>
+                 <li class="mb-5">Proveedor:<span class="text-brand" id="pvendor_id"> </span></li>
             </ul>
         </div>
-                
+
             </div> <!-- // End col  -->
 
 
@@ -79,12 +79,12 @@
 
                 <div class="font-xs">
             <ul>
-                <li class="mb-5">Product Code : <span class="text-brand" id="pcode"> </span></li>
+                <li class="mb-5">Código del producto : <span class="text-brand" id="pcode"> </span></li>
                 <li class="mb-5">Stock:<span class="badge badge-pill badge-success" id="aviable" style="background:green; color: white;"> </span>
                     <span class="badge badge-pill badge-danger" id="stockout" style="background:red; color: white;"> </span></li>
             </ul>
         </div>
-                
+
             </div> <!-- // End col  -->
 
 
@@ -92,7 +92,7 @@
         </div> <!-- // end row -->
 
 
-        
+
     </div>
                             <!-- Detail Info -->
                         </div>
