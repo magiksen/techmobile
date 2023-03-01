@@ -43,7 +43,7 @@
 
     <div class="form-group col-md-12">
         <label>Código de factura <span class="required">*</span></label>
-        <input  class="form-control" name="code" type="text" placeholder="Your Order Invoice Number" required="" />
+        <input  class="form-control" name="code" type="text" placeholder="Numero de factura" required="" />
 
     </div>
 

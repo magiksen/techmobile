@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-   Order Tracking Page 
+    Seguimiento de pedidos
 @endsection
 
 
@@ -18,68 +18,68 @@
 
 <div class="container">
     <article class="card">
-        <header class="card-header"> My Orders / Tracking </header>
+        <header class="card-header"> Mis pedidos / Rastreo </header>
         <div class="card-body">
-            <h6>Invoice Number : {{ $track->invoice_no }} </h6>
+            <h6>Número Factura : {{ $track->invoice_no }} </h6>
             <article class="card">
                 <div class="card-body row">
-                    <div class="col"> <strong>Order Date:</strong> <br>{{ $track->order_date }} </div>
+                    <div class="col"> <strong>Fecha del pedido:</strong> <br>{{ $track->order_date }} </div>
 
-     <div class="col"> <strong>Shipping BY:</strong> <br> {{ $track->name }} | <i class="fa fa-phone"></i>{{ $track->phone }} / {{ $track->division->division_name }} / {{ $track->district->district_name }}   </div>
+     <div class="col"> <strong>Enviado para:</strong> <br> {{ $track->name }} | <i class="fa fa-phone"></i>{{ $track->phone }} / {{ $track->division->division_name }} / {{ $track->district->district_name }}   </div>
 
-     <div class="col"> <strong>Payment Method:</strong> <br>{{ $track->payment_method }} </div>
+     <div class="col"> <strong>Tipo de pedido:</strong> <br>{{ $track->payment_method }} </div>
 
-     <div class="col"> <strong>Total Amount #:</strong> <br>${{ $track->amount }}</div>
+     <div class="col"> <strong>Monto total #:</strong> <br>${{ $track->amount }}</div>
                 </div>
             </article>
             <div class="track">
 
-     @if($track->status == 'pending')           
-       <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+     @if($track->status == 'pending')
+       <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Pedido pendiente</span> </div>
 
-       <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Order Confirmed</span> </div>
+       <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Pedido confirmado</span> </div>
 
-       <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Order Processing </span> </div>
+       <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Procesando pedido</span> </div>
 
-       <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered </span> </div>
+       <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Enviado</span> </div>
 
        @elseif($track->status == 'confirm')
 
-        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Pedido pendiente</span> </div>
 
-       <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Order Confirmed</span> </div>
+       <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Pedido confirmado</span> </div>
 
        <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Order Processing </span> </div>
 
-       <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered </span> </div>
+       <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Enviado</span> </div>
 
        @elseif($track->status == 'processing')
 
-        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+        <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Pedido pendiente</span> </div>
 
-       <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Order Confirmed</span> </div>
+       <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Pedido confirmado</span> </div>
 
-       <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Order Processing </span> </div>
+       <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Procesando pedido</span> </div>
 
-       <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered </span> </div>
+       <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Enviado</span> </div>
 
     @elseif($track->status == 'deliverd')
 
-      <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order Pending</span> </div>
+      <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Pedido pendiente</span> </div>
 
-       <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Order Confirmed</span> </div>
+       <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Pedido confirmado</span> </div>
 
-       <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Order Processing </span> </div>
+       <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Procesando pedido</span> </div>
 
-       <div class="step active"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Delivered </span> </div>
+       <div class="step active"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Enviado</span> </div>
 
        @endif
 
 
             </div>
-            
+
             <hr>
-            <a href="{{ route('user.track.order') }}" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i> Back to orders</a>
+            <a href="{{ route('user.track.order') }}" class="btn btn-warning" data-abc="true"> <i class="fa fa-chevron-left"></i>Regresar a pedidos</a>
         </div>
     </article>
 </div>
