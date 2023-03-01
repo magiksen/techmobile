@@ -21,22 +21,22 @@ class VendorProductController extends Controller
         $id = Auth::user()->id;
         $products = Product::where('vendor_id',$id)->latest()->get();
         return view('vendor.backend.product.vendor_product_all',compact('products'));
-    } // End Method 
+    } // End Method
 
  public function VendorAddProduct(){
-         
+
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
         return view('vendor.backend.product.vendor_product_add',compact('brands','categories'));
 
-    } // End Method 
+    } // End Method
 
 
  public function VendorGetSubCategory($category_id){
         $subcat = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
             return json_encode($subcat);
 
-    }// End Method 
+    }// End Method
 
 
 public function VendorStoreProduct(Request $request){
@@ -64,17 +64,17 @@ public function VendorStoreProduct(Request $request){
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
             'short_descp' => $request->short_descp,
-            'long_descp' => $request->long_descp, 
+            'long_descp' => $request->long_descp,
 
             'hot_deals' => $request->hot_deals,
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,
-            'special_deals' => $request->special_deals, 
+            'special_deals' => $request->special_deals,
 
             'product_thambnail' => $save_url,
             'vendor_id' => Auth::user()->id,
             'status' => 1,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -91,33 +91,33 @@ public function VendorStoreProduct(Request $request){
 
             'product_id' => $product_id,
             'photo_name' => $uploadPath,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
-        ]); 
+        ]);
         } // end foreach
 
         /// End Multiple Image Upload From her //////
 
         $notification = array(
-            'message' => 'Vendor Product Inserted Successfully',
+            'message' => 'Producto creado con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('vendor.all.product')->with($notification); 
+        return redirect()->route('vendor.all.product')->with($notification);
 
 
-    } // End Method 
+    } // End Method
 
  public function VendorEditProduct($id){
 
         $multiImgs = MultiImg::where('product_id',$id)->get();
-       
+
         $brands = Brand::latest()->get();
         $categories = Category::latest()->get();
         $subcategory = SubCategory::latest()->get();
         $products = Product::findOrFail($id);
         return view('vendor.backend.product.vendor_product_edit',compact('brands','categories', 'products','subcategory','multiImgs'));
-    }// End Method 
+    }// End Method
 
 
 
@@ -142,15 +142,15 @@ public function VendorUpdateProduct(Request $request){
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
             'short_descp' => $request->short_descp,
-            'long_descp' => $request->long_descp, 
+            'long_descp' => $request->long_descp,
 
             'hot_deals' => $request->hot_deals,
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,
-            'special_deals' => $request->special_deals,  
-            
+            'special_deals' => $request->special_deals,
+
             'status' => 1,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -160,9 +160,9 @@ public function VendorUpdateProduct(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->route('vendor.all.product')->with($notification); 
+        return redirect()->route('vendor.all.product')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
  public function VendorUpdateProductThabnail(Request $request){
@@ -190,13 +190,13 @@ public function VendorUpdateProduct(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
 
-    //Vendor Multi Image Update 
+    //Vendor Multi Image Update
     public function VendorUpdateProductmultiImage(Request $request){
 
         $imgs = $request->multi_img;
@@ -213,7 +213,7 @@ public function VendorUpdateProduct(Request $request){
             'photo_name' => $uploadPath,
             'updated_at' => Carbon::now(),
 
-        ]); 
+        ]);
         } // end foreach
 
          $notification = array(
@@ -221,9 +221,9 @@ public function VendorUpdateProduct(Request $request){
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
  public function VendorMultiimgDelete($id){
@@ -239,7 +239,7 @@ public function VendorUpdateProduct(Request $request){
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function VendorProductInactive($id){
@@ -252,7 +252,7 @@ public function VendorUpdateProduct(Request $request){
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
       public function VendorProductActive($id){
@@ -265,7 +265,7 @@ public function VendorUpdateProduct(Request $request){
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
      public function VendorProductDelete($id){
@@ -287,8 +287,7 @@ public function VendorUpdateProduct(Request $request){
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
 }
- 

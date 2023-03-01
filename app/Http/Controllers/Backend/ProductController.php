@@ -18,7 +18,7 @@ class ProductController extends Controller
      public function AllProduct(){
         $products = Product::latest()->get();
         return view('backend.product.product_all',compact('products'));
-    } // End Method 
+    } // End Method
 
 
     public function AddProduct(){
@@ -27,7 +27,7 @@ class ProductController extends Controller
         $categories = Category::latest()->get();
         return view('backend.product.product_add',compact('brands','categories','activeVendor'));
 
-    } // End Method 
+    } // End Method
 
 
 
@@ -56,17 +56,17 @@ class ProductController extends Controller
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
             'short_descp' => $request->short_descp,
-            'long_descp' => $request->long_descp, 
+            'long_descp' => $request->long_descp,
 
             'hot_deals' => $request->hot_deals,
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,
-            'special_deals' => $request->special_deals, 
+            'special_deals' => $request->special_deals,
 
             'product_thambnail' => $save_url,
             'vendor_id' => $request->vendor_id,
             'status' => 1,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
         ]);
 
@@ -83,22 +83,22 @@ class ProductController extends Controller
 
             'product_id' => $product_id,
             'photo_name' => $uploadPath,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
-        ]); 
+        ]);
         } // end foreach
 
         /// End Multiple Image Upload From her //////
 
         $notification = array(
-            'message' => 'Product Inserted Successfully',
+            'message' => 'Producto creado con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.product')->with($notification); 
+        return redirect()->route('all.product')->with($notification);
 
 
-    } // End Method 
+    } // End Method
 
 
     public function EditProduct($id){
@@ -110,7 +110,7 @@ class ProductController extends Controller
         $subcategory = SubCategory::latest()->get();
         $products = Product::findOrFail($id);
         return view('backend.product.product_edit',compact('brands','categories','activeVendor','products','subcategory','multiImgs'));
-    }// End Method 
+    }// End Method
 
 
     public function UpdateProduct(Request $request){
@@ -134,29 +134,29 @@ class ProductController extends Controller
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
             'short_descp' => $request->short_descp,
-            'long_descp' => $request->long_descp, 
+            'long_descp' => $request->long_descp,
 
             'hot_deals' => $request->hot_deals,
             'featured' => $request->featured,
             'special_offer' => $request->special_offer,
-            'special_deals' => $request->special_deals, 
+            'special_deals' => $request->special_deals,
 
-             
+
             'vendor_id' => $request->vendor_id,
             'status' => 1,
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
 
         ]);
 
 
          $notification = array(
-            'message' => 'Product Updated Without Image Successfully',
+            'message' => 'Producto actualizado sin imagen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.product')->with($notification); 
+        return redirect()->route('all.product')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
 
@@ -182,16 +182,16 @@ class ProductController extends Controller
         ]);
 
        $notification = array(
-            'message' => 'Product Image Thambnail Updated Successfully',
+            'message' => 'Imagen destacada del producto actualizada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
 
-    }// End Method 
+    }// End Method
 
-// Multi Image Update 
+// Multi Image Update
     public function UpdateProductMultiimage(Request $request){
 
         $imgs = $request->multi_img;
@@ -208,17 +208,17 @@ class ProductController extends Controller
             'photo_name' => $uploadPath,
             'updated_at' => Carbon::now(),
 
-        ]); 
+        ]);
         } // end foreach
 
          $notification = array(
-            'message' => 'Product Multi Image Updated Successfully',
+            'message' => 'Imagenes del producto actualizada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
 
@@ -229,39 +229,39 @@ class ProductController extends Controller
         MultiImg::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Product Multi Image Deleted Successfully',
+            'message' => 'Imagenes del prodcuto elminadas con éxito',
             'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function ProductInactive($id){
 
         Product::findOrFail($id)->update(['status' => 0]);
         $notification = array(
-            'message' => 'Product Inactive',
+            'message' => 'Producto desactivado con éxito',
             'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
       public function ProductActive($id){
 
         Product::findOrFail($id)->update(['status' => 1]);
         $notification = array(
-            'message' => 'Product Active',
+            'message' => 'Producto ativado con éxito',
             'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function ProductDelete($id){
@@ -277,20 +277,19 @@ class ProductController extends Controller
         }
 
         $notification = array(
-            'message' => 'Product Deleted Successfully',
+            'message' => 'Producto elminado con éxito',
             'alert-type' => 'success'
         );
 
         return redirect()->back()->with($notification);
 
-    }// End Method 
-        
+    }// End Method
+
     public function ProductStock(){
 
         $products = Product::latest()->get();
         return view('backend.product.product_stock',compact('products'));
 
-    }// End Method 
+    }// End Method
 
 }
- 

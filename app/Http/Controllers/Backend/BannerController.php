@@ -12,11 +12,11 @@ class BannerController extends Controller
      public function AllBanner(){
         $banner = Banner::latest()->get();
         return view('backend.banner.banner_all',compact('banner'));
-    } // End Method 
+    } // End Method
 
  public function AddBanner(){
             return view('backend.banner.banner_add');
-    }// End Method 
+    }// End Method
 
      public function StoreBanner(Request $request){
 
@@ -28,23 +28,23 @@ class BannerController extends Controller
         Banner::insert([
             'banner_title' => $request->banner_title,
             'banner_url' => $request->banner_url,
-            'banner_image' => $save_url, 
+            'banner_image' => $save_url,
         ]);
 
        $notification = array(
-            'message' => 'Banner Inserted Successfully',
+            'message' => 'Banner Insertado con éxito',
             'alert-type' => 'info'
         );
 
-        return redirect()->route('all.banner')->with($notification); 
+        return redirect()->route('all.banner')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
      public function EditBanner($id){
         $banner = Banner::findOrFail($id);
         return view('backend.banner.banner_edit',compact('banner'));
-    }// End Method 
+    }// End Method
 
 
     public function UpdateBanner(Request $request){
@@ -66,33 +66,33 @@ class BannerController extends Controller
         Banner::findOrFail($banner_id)->update([
             'banner_title' => $request->banner_title,
             'banner_url' => $request->banner_url,
-            'banner_image' => $save_url, 
+            'banner_image' => $save_url,
         ]);
 
        $notification = array(
-            'message' => 'Banner Updated with image Successfully',
+            'message' => 'Banner actualizado con imagen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.banner')->with($notification); 
+        return redirect()->route('all.banner')->with($notification);
 
         } else {
 
             Banner::findOrFail($banner_id)->update([
             'banner_title' => $request->banner_title,
-            'banner_url' => $request->banner_url, 
+            'banner_url' => $request->banner_url,
         ]);
 
        $notification = array(
-            'message' => 'Banner Updated without image Successfully',
+            'message' => 'Banner actualizado sin imagen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.banner')->with($notification); 
+        return redirect()->route('all.banner')->with($notification);
 
         } // end else
 
-    }// End Method 
+    }// End Method
 
 
 
@@ -101,21 +101,20 @@ class BannerController extends Controller
 
         $banner = Banner::findOrFail($id);
         $img = $banner->banner_image;
-        unlink($img ); 
+        unlink($img );
 
         Banner::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Banner Deleted Successfully',
+            'message' => 'Banner eliminado con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
 
 
 }
- 

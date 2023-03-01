@@ -16,29 +16,29 @@ class BlogController extends Controller
         $blogcategoryies = BlogCategory::latest()->get();
         return view('backend.blog.category.blogcategroy_all',compact('blogcategoryies'));
 
-    } // End Method 
+    } // End Method
 
     public function AddBlogCateogry(){
         return view('backend.blog.category.blogcategroy_add');
-    } // End Method 
+    } // End Method
 
 
     public function StoreBlogCateogry(Request $request){
- 
+
         BlogCategory::insert([
             'blog_category_name' => $request->blog_category_name,
             'blog_category_slug' => strtolower(str_replace(' ', '-',$request->blog_category_name)),
-            'created_at' => Carbon::now(), 
+            'created_at' => Carbon::now(),
         ]);
 
        $notification = array(
-            'message' => 'Blog Category Inserted Successfully',
+            'message' => 'Categoría de blog creada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.blog.category')->with($notification); 
+        return redirect()->route('admin.blog.category')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function EditBlogCateogry($id){
@@ -46,37 +46,37 @@ class BlogController extends Controller
         $blogcategoryies = BlogCategory::findOrFail($id);
         return view('backend.blog.category.blogcategroy_edit',compact('blogcategoryies'));
 
-    }// End Method 
+    }// End Method
 
      public function UpdateBlogCateogry(Request $request){
-    
+
       $blog_id = $request->id;
 
         BlogCategory::findOrFail($blog_id)->update([
             'blog_category_name' => $request->blog_category_name,
-            'blog_category_slug' => strtolower(str_replace(' ', '-',$request->blog_category_name)), 
+            'blog_category_slug' => strtolower(str_replace(' ', '-',$request->blog_category_name)),
         ]);
 
        $notification = array(
-            'message' => 'Blog Category Updated Successfully',
+            'message' => 'Categoría de blog actualizada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.blog.category')->with($notification); 
+        return redirect()->route('admin.blog.category')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function DeleteBlogCateogry($id){
         BlogCategory::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Blog Category Deleted Successfully',
+            'message' => 'Categoría de blog actualizada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
-    }// End Method 
+        return redirect()->back()->with($notification);
+    }// End Method
 
     //////////////////// Blog Post Methods //////////////////
 
@@ -86,13 +86,13 @@ class BlogController extends Controller
         $blogpost = BlogPost::latest()->get();
         return view('backend.blog.post.blogpost_all',compact('blogpost'));
 
-    } // End Method 
+    } // End Method
 
 
     public function AddBlogPost(){
         $blogcategory = BlogCategory::latest()->get();
         return view('backend.blog.post.blogpost_add',compact('blogcategory'));
-    } // End Method 
+    } // End Method
 
 
     public function StoreBlogPost(Request $request){
@@ -108,25 +108,25 @@ class BlogController extends Controller
             'post_slug' => strtolower(str_replace(' ', '-',$request->post_title)),
             'post_short_description' => $request->post_short_description,
             'post_long_description' => $request->post_long_description,
-            'post_image' => $save_url, 
+            'post_image' => $save_url,
             'created_at' => Carbon::now(),
         ]);
 
        $notification = array(
-            'message' => 'Blog Post Inserted Successfully',
+            'message' => 'Entrada creada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.blog.post')->with($notification); 
+        return redirect()->route('admin.blog.post')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function EditBlogPost($id){
          $blogcategory = BlogCategory::latest()->get();
          $blogpost = BlogPost::findOrFail($id);
         return view('backend.blog.post.blogpost_edit',compact('blogcategory','blogpost'));
-    }// End Method 
+    }// End Method
 
 
      public function UpdateBlogPost(Request $request){
@@ -151,16 +151,16 @@ class BlogController extends Controller
             'post_slug' => strtolower(str_replace(' ', '-',$request->post_title)),
             'post_short_description' => $request->post_short_description,
             'post_long_description' => $request->post_long_description,
-            'post_image' => $save_url, 
+            'post_image' => $save_url,
             'updated_at' => Carbon::now(),
         ]);
 
        $notification = array(
-            'message' => 'Blog Post Updated with image Successfully',
+            'message' => 'Entrada actualizada con inamgen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.blog.post')->with($notification); 
+        return redirect()->route('admin.blog.post')->with($notification);
 
         } else {
 
@@ -169,38 +169,38 @@ class BlogController extends Controller
             'post_title' => $request->post_title,
             'post_slug' => strtolower(str_replace(' ', '-',$request->post_title)),
             'post_short_description' => $request->post_short_description,
-            'post_long_description' => $request->post_long_description, 
+            'post_long_description' => $request->post_long_description,
             'updated_at' => Carbon::now(),
         ]);
 
        $notification = array(
-            'message' => 'Blog Post Updated without image Successfully',
+            'message' => 'Entrada actualizada sin inamgen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.blog.post')->with($notification); 
+        return redirect()->route('admin.blog.post')->with($notification);
 
         } // end else
 
-    }// End Method 
+    }// End Method
 
 
      public function DeleteBlogPost($id){
 
         $blogpost = BlogPost::findOrFail($id);
         $img = $blogpost->post_image;
-        unlink($img ); 
+        unlink($img );
 
         BlogPost::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Blog Post Deleted Successfully',
+            'message' => 'Entrada eliminada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     //////////////////// Frontend Blog All Method //////////////
@@ -210,7 +210,7 @@ class BlogController extends Controller
         $blogcategoryies = BlogCategory::latest()->get();
         $blogpost = BlogPost::latest()->get();
         return view('frontend.blog.home_blog',compact('blogcategoryies','blogpost'));
-    }// End Method 
+    }// End Method
 
     public function BlogDetails($id,$slug){
         $blogcategoryies = BlogCategory::latest()->get();
@@ -218,7 +218,7 @@ class BlogController extends Controller
         $breadcat = BlogCategory::where('id',$id)->get();
         return view('frontend.blog.blog_details',compact('blogcategoryies','blogdetails','breadcat'));
 
-    }// End Method 
+    }// End Method
 
 
     public function BlogPostCategory($id,$slug){
@@ -228,9 +228,8 @@ class BlogController extends Controller
         $breadcat = BlogCategory::where('id',$id)->get();
         return view('frontend.blog.category_post',compact('blogcategoryies','blogpost','breadcat'));
 
-    }// End Method 
+    }// End Method
 
 
 
 }
- 

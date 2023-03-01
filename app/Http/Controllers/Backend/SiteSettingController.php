@@ -15,12 +15,12 @@ class SiteSettingController extends Controller
         $setting = SiteSetting::find(1);
         return view('backend.setting.setting_update',compact('setting'));
 
-    } // End Method 
+    } // End Method
 
 
 public function SiteSettingUpdate(Request $request){
 
-        $setting_id = $request->id; 
+        $setting_id = $request->id;
 
         if ($request->file('logo')) {
 
@@ -29,7 +29,7 @@ public function SiteSettingUpdate(Request $request){
         Image::make($image)->resize(180,56)->save('upload/logo/'.$name_gen);
         $save_url = 'upload/logo/'.$name_gen;
 
-        
+
         SiteSetting::findOrFail($setting_id)->update([
             'support_phone' => $request->support_phone,
             'phone_one' => $request->phone_one,
@@ -38,16 +38,16 @@ public function SiteSettingUpdate(Request $request){
             'facebook' => $request->facebook,
             'twitter' => $request->twitter,
             'youtube' => $request->youtube,
-            'copyright' => $request->copyright, 
-            'logo' => $save_url, 
+            'copyright' => $request->copyright,
+            'logo' => $save_url,
         ]);
 
        $notification = array(
-            'message' => 'Site Setting Updated with image Successfully',
+            'message' => 'Opciones de sitio actualizadas con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
         } else {
 
@@ -59,20 +59,20 @@ public function SiteSettingUpdate(Request $request){
             'facebook' => $request->facebook,
             'twitter' => $request->twitter,
             'youtube' => $request->youtube,
-            'copyright' => $request->copyright, 
+            'copyright' => $request->copyright,
         ]);
 
        $notification = array(
-            'message' => 'Site Setting Updated without image Successfully',
+            'message' => 'Opciones de sitio actualizadas sin imagen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
         } // end else
 
-    }// End Method 
- 
+    }// End Method
+
 
     //////////// Seo Setting /////////////
 
@@ -81,7 +81,7 @@ public function SiteSettingUpdate(Request $request){
         $seo = Seo::find(1);
         return view('backend.seo.seo_update',compact('seo'));
 
-    } // End Method 
+    } // End Method
 
 
     public function SeoSettingUpdate(Request $request){
@@ -91,17 +91,16 @@ public function SiteSettingUpdate(Request $request){
             'meta_title' => $request->meta_title,
             'meta_author' => $request->meta_author,
             'meta_keyword' => $request->meta_keyword,
-            'meta_description' => $request->meta_description, 
+            'meta_description' => $request->meta_description,
         ]);
 
        $notification = array(
-            'message' => 'Seo Setting Updated Successfully',
+            'message' => 'Opciones de SEO actualizadas con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);  
+        return redirect()->back()->with($notification);
 
-    }// End Method 
+    }// End Method
 
 }
- 

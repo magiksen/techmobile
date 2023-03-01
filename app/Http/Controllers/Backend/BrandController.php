@@ -12,12 +12,12 @@ class BrandController extends Controller
     public function AllBrand(){
         $brands = Brand::latest()->get();
         return view('backend.brand.brand_all',compact('brands'));
-    } // End Method 
+    } // End Method
 
 
     public function AddBrand(){
          return view('backend.brand.brand_add');
-    } // End Method 
+    } // End Method
 
 
     public function StoreBrand(Request $request){
@@ -30,23 +30,23 @@ class BrandController extends Controller
         Brand::insert([
             'brand_name' => $request->brand_name,
             'brand_slug' => strtolower(str_replace(' ', '-',$request->brand_name)),
-            'brand_image' => $save_url, 
+            'brand_image' => $save_url,
         ]);
 
        $notification = array(
-            'message' => 'Brand Inserted Successfully',
+            'message' => 'Marca creada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.brand')->with($notification); 
+        return redirect()->route('all.brand')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
     public function EditBrand($id){
         $brand = Brand::findOrFail($id);
         return view('backend.brand.brand_edit',compact('brand'));
-    }// End Method 
+    }// End Method
 
 
     public function UpdateBrand(Request $request){
@@ -68,52 +68,51 @@ class BrandController extends Controller
         Brand::findOrFail($brand_id)->update([
             'brand_name' => $request->brand_name,
             'brand_slug' => strtolower(str_replace(' ', '-',$request->brand_name)),
-            'brand_image' => $save_url, 
+            'brand_image' => $save_url,
         ]);
 
        $notification = array(
-            'message' => 'Brand Updated with image Successfully',
+            'message' => 'Marca actualizada con imagen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.brand')->with($notification); 
+        return redirect()->route('all.brand')->with($notification);
 
         } else {
 
              Brand::findOrFail($brand_id)->update([
             'brand_name' => $request->brand_name,
-            'brand_slug' => strtolower(str_replace(' ', '-',$request->brand_name)), 
+            'brand_slug' => strtolower(str_replace(' ', '-',$request->brand_name)),
         ]);
 
        $notification = array(
-            'message' => 'Brand Updated without image Successfully',
+            'message' => 'Marca actualizada sin imagen con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.brand')->with($notification); 
+        return redirect()->route('all.brand')->with($notification);
 
         } // end else
 
-    }// End Method 
+    }// End Method
 
 
     public function DeleteBrand($id){
 
         $brand = Brand::findOrFail($id);
         $img = $brand->brand_image;
-        unlink($img ); 
+        unlink($img );
 
         Brand::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Brand Deleted Successfully',
+            'message' => 'Marca eliminada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
- 
+    }// End Method
+
 
 }
- 

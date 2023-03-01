@@ -13,7 +13,7 @@ class ReturnController extends Controller
         $orders = Order::where('return_order',1)->orderBy('id','DESC')->get();
         return view('backend.return_order.return_request',compact('orders'));
 
-    } // End Method 
+    } // End Method
 
 
     public function ReturnRequestApproved($order_id){
@@ -21,13 +21,13 @@ class ReturnController extends Controller
         Order::where('id',$order_id)->update(['return_order' => 2]);
 
         $notification = array(
-            'message' => 'Return Order Successfully',
+            'message' => 'Devolución aprobada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    } // End Method 
+    } // End Method
 
 
      public function CompleteReturnRequest(){
@@ -35,8 +35,7 @@ class ReturnController extends Controller
         $orders = Order::where('return_order',2)->orderBy('id','DESC')->get();
         return view('backend.return_order.complete_return_request',compact('orders'));
 
-    } // End Method 
+    } // End Method
 
 
 }
- 

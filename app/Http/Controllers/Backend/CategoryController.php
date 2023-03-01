@@ -6,18 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use Image;
- 
+
 class CategoryController extends Controller
 {
      public function AllCategory(){
         $categories = Category::latest()->get();
         return view('backend.category.category_all',compact('categories'));
-    } // End Method 
- 
+    } // End Method
+
 
     public function AddCategory(){
         return view('backend.category.category_add');
-    }// End Method 
+    }// End Method
 
 
 
@@ -31,24 +31,24 @@ class CategoryController extends Controller
         Category::insert([
             'category_name' => $request->category_name,
             'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
-            'category_image' => $save_url, 
+            'category_image' => $save_url,
         ]);
 
        $notification = array(
-            'message' => 'Category Inserted Successfully',
+            'message' => 'Categoría creada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.category')->with($notification); 
+        return redirect()->route('all.category')->with($notification);
 
-    }// End Method 
+    }// End Method
 
 
 
     public function EditCategory($id){
         $category = Category::findOrFail($id);
         return view('backend.category.category_edit',compact('category'));
-    }// End Method 
+    }// End Method
 
 
   public function UpdateCategory(Request $request){
@@ -70,55 +70,55 @@ class CategoryController extends Controller
         Category::findOrFail($cat_id)->update([
             'category_name' => $request->category_name,
             'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
-            'category_image' => $save_url, 
+            'category_image' => $save_url,
         ]);
 
        $notification = array(
-            'message' => 'Category Updated with image Successfully',
+            'message' => 'Categoría actualizada con imagen correctamente',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.category')->with($notification); 
+        return redirect()->route('all.category')->with($notification);
 
         } else {
 
              Category::findOrFail($cat_id)->update([
             'category_name' => $request->category_name,
-            'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)), 
+            'category_slug' => strtolower(str_replace(' ', '-',$request->category_name)),
         ]);
 
        $notification = array(
-            'message' => 'Category Updated without image Successfully',
+            'message' => 'Categoría actualizada sin imagen correctamente',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('all.category')->with($notification); 
+        return redirect()->route('all.category')->with($notification);
 
         } // end else
 
-    }// End Method 
+    }// End Method
 
 
     public function DeleteCategory($id){
 
         $category = Category::findOrFail($id);
         $img = $category->category_image;
-        unlink($img ); 
+        unlink($img );
 
         Category::findOrFail($id)->delete();
 
         $notification = array(
-            'message' => 'Category Deleted Successfully',
+            'message' => 'Categoría eliminada con éxito',
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification); 
+        return redirect()->back()->with($notification);
 
-    }// End Method 
- 
-
+    }// End Method
 
 
 
 
-} 
+
+
+}
