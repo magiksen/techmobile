@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Invoice</title>
+<title>Factura</title>
 
 <style type="text/css">
     * {
@@ -48,15 +48,15 @@
     <tr>
         <td valign="top">
           <!-- {{-- <img src="" alt="" width="150"/> --}} -->
-          <h2 style="color: green; font-size: 26px;"><strong>EasyShop</strong></h2>
+          <h2 style="color: green; font-size: 26px;"><strong>Techmobile</strong></h2>
         </td>
         <td align="right">
             <pre class="font" >
-               EasyShop Head Office
-               Email:support@easylearningbd.com <br>
-               Mob: 1245454545 <br>
-               Dhaka 1207,Dhanmondi:#4 <br>
-              
+               Techmobile Oficina Comercial
+               Email: facturas@techmobile.com <br>
+               Telf:  04262219083<br>
+               CCCT <br>
+
             </pre>
         </td>
     </tr>
@@ -70,42 +70,42 @@
     <tr>
         <td>
           <p class="font" style="margin-left: 20px;">
-           <strong>Name:</strong> {{ $order->name }} <br>
+           <strong>Nombre:</strong> {{ $order->name }} <br>
            <strong>Email:</strong> {{ $order->email }} <br>
-           <strong>Phone:</strong> {{ $order->phone }} <br>
+           <strong>Teléfono:</strong> {{ $order->phone }} <br>
             @php
-            $div =  $order->division->division_name; 
+            $div =  $order->division->division_name;
             $dis =  $order->district->district_name;
-            $state = $order->state->state_name; 
+            $state = $order->state->state_name;
             @endphp
-           <strong>Address:</strong> {{ $order->adress }} / {{$div}} / {{ $dis }}/ {{ $state }}<br>
-           <strong>Post Code:</strong> {{ $order->post_code }}
+           <strong>Dirección:</strong> {{ $order->adress }} / {{$div}} / {{ $dis }}/ {{ $state }}<br>
+           <strong>Código postal:</strong> {{ $order->post_code }}
          </p>
         </td>
         <td>
           <p class="font">
-            <h3><span style="color: green;">Invoice:</span> #{{ $order->invoice_no }}</h3>
-            Order Date: {{ $order->order_date }} <br>
-             Delivery Date: {{ $order->delivered_date }} <br>
-            Payment Type : {{ $order->payment_method }} </span>
+            <h3><span style="color: green;">Factura:</span> #{{ $order->invoice_no }}</h3>
+            Fecha del pedido: {{ $order->order_date }} <br>
+             Fecha de entrega: {{ $order->delivered_date }} <br>
+            Tipo de pago: {{ $order->payment_method }} </span>
          </p>
         </td>
     </tr>
   </table>
   <br/>
-<h3>Products</h3>
+<h3>Productos</h3>
 
 
   <table width="100%">
     <thead style="background-color: green; color:#FFFFFF;">
       <tr class="font">
-        <th>Image</th>
-        <th>Product Name</th>
-        <th>Size</th>
+        <th>Imagen</th>
+        <th>Nombre del producto</th>
+        <th>Talla</th>
         <th>Color</th>
-        <th>Code</th>
-        <th>Quantity</th>
-        <th>Vendor</th>
+        <th>Código</th>
+        <th>Cantidad</th>
+        <th>Proveedor</th>
         <th>Total </th>
       </tr>
     </thead>
@@ -117,7 +117,7 @@
             <img src="{{ public_path($item->product->product_thambnail) }}" height="50px;" width="50px;" alt="">
         </td>
         <td align="center">{{ $item->product->product_name }}</td>
-       
+
          @if($item->color == NULL)
          <td align="center"> ...</td>
          @else
@@ -137,7 +137,7 @@
           @else
           <td align="center">{{ $item->product->vendor->name }}</td>
           @endif
-        
+
         <td align="center">${{ $item->price }}</td>
       </tr>
       @endforeach
@@ -154,11 +154,11 @@
     </tr>
   </table>
   <div class="thanks mt-3">
-    <p>Thanks For Buying Products..!!</p>
+    <p>Gracias por su compra..!!</p>
   </div>
   <div class="authority float-right mt-5">
       <p>-----------------------------------</p>
-      <h5>Authority Signature:</h5>
+      <h5>Firma</h5>
     </div>
 </body>
 </html>
