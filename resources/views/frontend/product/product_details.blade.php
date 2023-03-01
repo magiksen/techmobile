@@ -2,17 +2,17 @@
 @section('main')
 
 @section('title')
-    {{ $product->product_name }} 
+    {{ $product->product_name }}
 @endsection
 
 <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
-                    <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                    <span></span> <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a> <span></span> {{ $product['subcategory']['subcategory_name'] }} <span></span>{{ $product->product_name }} 
+                    <a href="{{ route('homepage') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Inicio</a>
+                    <span></span> <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a> <span></span> {{ $product['subcategory']['subcategory_name'] }} <span></span>{{ $product->product_name }}
                 </div>
             </div>
-        </div> 
+        </div>
         <div class="container mb-30">
             <div class="row">
                 <div class="col-xl-10 col-lg-12 m-auto">
@@ -34,7 +34,7 @@
 					@foreach($multiImage as $img)
                     <div><img src="{{ asset($img->photo_name) }}" alt="product image" /></div>
                      @endforeach
-                  
+
                 </div>
             </div>
             <!-- End Gallery -->
@@ -42,11 +42,11 @@
         <div class="col-md-6 col-sm-12 col-xs-12">
             <div class="detail-info pr-30 pl-30">
             	@if($product->product_qty > 0)
-            	 <span class="stock-status in-stock">In Stock </span>
+            	 <span class="stock-status in-stock">Disponible</span>
             	@else
-            	<span class="stock-status out-stock">Stock Out </span>
+            	<span class="stock-status out-stock">No Disponible</span>
             	@endif
-                
+
 
 
                 <h2 class="title-detail" id="dpname"> {{ $product->product_name }} </h2>
@@ -59,52 +59,52 @@ $reviewcount = App\Models\Review::where('product_id',$product->id)->where('statu
 
 $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
 @endphp
-  
+
 
                         <div class="product-rate d-inline-block">
        @if($avarage == 0)
-      
-       @elseif($avarage == 1 || $avarage < 2)                     
+
+       @elseif($avarage == 1 || $avarage < 2)
     <div class="product-rating" style="width: 20%"></div>
-       @elseif($avarage == 2 || $avarage < 3)                     
+       @elseif($avarage == 2 || $avarage < 3)
     <div class="product-rating" style="width: 40%"></div>
-       @elseif($avarage == 3 || $avarage < 4)                     
+       @elseif($avarage == 3 || $avarage < 4)
     <div class="product-rating" style="width: 60%"></div>
-       @elseif($avarage == 4 || $avarage < 5)                     
+       @elseif($avarage == 4 || $avarage < 5)
     <div class="product-rating" style="width: 80%"></div>
-       @elseif($avarage == 5 || $avarage < 5)                     
+       @elseif($avarage == 5 || $avarage < 5)
     <div class="product-rating" style="width: 100%"></div>
     @endif
                         </div>
 
 
 
-                        <span class="font-small ml-5 text-muted"> ({{ count($reviewcount)}} reviews)</span>
+                        <span class="font-small ml-5 text-muted"> ({{ count($reviewcount)}} comentarios)</span>
                     </div>
                 </div>
                 <div class="clearfix product-price-cover">
  @php
     $amount = $product->selling_price - $product->discount_price;
-    $discount = ($amount/$product->selling_price) * 100; 
+    $discount = ($amount/$product->selling_price) * 100;
     @endphp
 
  @if($product->discount_price == NULL)
 <div class="product-price primary-color float-left">
             <span class="current-price text-brand">${{ $product->selling_price }}</span>
-            
+
         </div>
  @else
 
  <div class="product-price primary-color float-left">
             <span class="current-price text-brand">${{ $product->discount_price }}</span>
             <span>
-                <span class="save-price font-md color3 ml-15">{{ round($discount) }}% Off</span>
+                <span class="save-price font-md color3 ml-15">{{ round($discount) }}% menos</span>
                 <span class="old-price font-md ml-15">${{ $product->selling_price }}</span>
             </span>
         </div>
 
  @endif
-         
+
 
                 </div>
                 <div class="short-desc mb-30">
@@ -118,7 +118,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 <div class="attr-detail attr-size mb-30">
         <strong class="mr-10" style="width:50px;">Size : </strong>
          <select class="form-control unicase-form-control" id="dsize">
-         	<option selected="" disabled="">--Choose Size--</option>
+         	<option selected="" disabled="">--Elige una Talla--</option>
          	@foreach($product_size as $size)
          	<option value="{{ $size }}">{{ ucwords($size)  }}</option>
          	@endforeach
@@ -136,16 +136,16 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 <div class="attr-detail attr-size mb-30">
         <strong class="mr-10" style="width:50px;">Color : </strong>
          <select class="form-control unicase-form-control" id="dcolor">
-         	<option selected="" disabled="">--Choose Color--</option>
+         	<option selected="" disabled="">--Elige un Color--</option>
          	@foreach($product_color as $color)
          	<option value="{{ $color }}">{{ ucwords($color)  }}</option>
          	@endforeach
          </select>
     </div>
 
-    
+
      @endif
-    
+
 
 
                 <div class="detail-extralink mb-50">
@@ -160,37 +160,37 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 
   <input type="hidden" id="vproduct_id" value="{{ $product->vendor_id }}">
 
-    <button type="submit" class="button button-add-to-cart" onclick="addToCartDetails()"><i class="fi-rs-shopping-cart"></i>Add to cart</button>
+    <button type="submit" class="button button-add-to-cart" onclick="addToCartDetails()"><i class="fi-rs-shopping-cart"></i>Agregar al carrito</button>
 
 
-                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                        <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                        <a aria-label="Add To Wishlist" class="action-btn hover-up" href="#"><i class="fi-rs-heart"></i></a>
+                        <a aria-label="Compare" class="action-btn hover-up" href="#"><i class="fi-rs-shuffle"></i></a>
                     </div>
                 </div>
 
 @if($product->vendor_id == NULL)
-<h6> Sold By <a href="#"> <span class="text-danger"> Owner </span> </a></h6>
+<h6><a href="#"> <span class="text-danger"> Techmobile </span> </a></h6>
 @else
-<h6> Sold By <a href="#"> <span class="text-danger"> {{ $product['vendor']['name'] }} </span></a></h6>
+<h6><a href="#"> <span class="text-danger"> {{ $product['vendor']['name'] }} </span></a></h6>
 @endif
 
 <hr>
 
 <div class="font-xs">
 <ul class="mr-50 float-start">
-<li class="mb-5">Brand: <span class="text-brand">{{ $product['brand']['brand_name'] }}</span></li>
+<li class="mb-5">Marca: <span class="text-brand">{{ $product['brand']['brand_name'] }}</span></li>
 
-<li class="mb-5">Category:<span class="text-brand"> {{ $product['category']['category_name'] }}</span></li>
+<li class="mb-5">Categoría:<span class="text-brand"> {{ $product['category']['category_name'] }}</span></li>
 
-<li>SubCategory: <span class="text-brand">{{ $product['subcategory']['subcategory_name'] }}</span></li>
+<li>Subcategoría: <span class="text-brand">{{ $product['subcategory']['subcategory_name'] }}</span></li>
 </ul>
 
 <ul class="float-start">
-<li class="mb-5">Product Code: <a href="#">{{ $product->product_code }}</a></li>
+<li class="mb-5">Código: <a href="#">{{ $product->product_code }}</a></li>
 
-<li class="mb-5">Tags: <a href="#" rel="tag"> {{ $product->product_tags }}</a></li>
+<li class="mb-5">Etiquetas: <a href="#" rel="tag"> {{ $product->product_tags }}</a></li>
 
-<li>Stock:<span class="in-stock text-brand ml-5">({{ $product->product_qty }}) Items In Stock</span></li>
+<li>Stock:<span class="in-stock text-brand ml-5">({{ $product->product_qty }}) Artículos en Stock</span></li>
 </ul>
 </div>
                                 </div>
@@ -201,23 +201,23 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
                             <div class="tab-style3">
                                 <ul class="nav nav-tabs text-uppercase">
 <li class="nav-item">
-    <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+    <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Descripción</a>
 </li>
 <li class="nav-item">
-    <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Additional info</a>
+    <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Información adicional</a>
 </li>
+{{--<li class="nav-item">--}}
+{{--    <a class="nav-link" id="Vendor-info-tab" data-bs-toggle="tab" href="#Vendor-info">Proveedor</a>--}}
+{{--</li>--}}
 <li class="nav-item">
-    <a class="nav-link" id="Vendor-info-tab" data-bs-toggle="tab" href="#Vendor-info">Vendor</a>
-</li>
-<li class="nav-item">
-    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews ({{ count($reviewcount) }})</a>
+    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Comentarios ({{ count($reviewcount) }})</a>
 </li>
 </ul>
 <div class="tab-content shop_info_tab entry-main-content">
 <div class="tab-pane fade show active" id="Description">
     <div class="">
         <p> {!! $product->long_descp !!} </p>
-        
+
     </div>
 </div>
 <div class="tab-pane fade" id="Additional-info">
@@ -312,49 +312,49 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 </div>
 
 
-<div class="tab-pane fade" id="Vendor-info">
-    <div class="vendor-logo d-flex mb-30">
-        <img src="{{ (!empty($product->vendor->photo)) ? url('upload/vendor_images/'.$product->vendor->photo):url('upload/no_image.jpg') }}" alt="" />
-        <div class="vendor-name ml-15">
-        	@if($product->vendor_id == NULL)
-        	<h6>
-                <a href="vendor-details-2.html">Owner</a>
-            </h6>
-        	@else
-        	<h6>
-                <a href="vendor-details-2.html">{{ $product['vendor']['name'] }}</a>
-            </h6>
-        	@endif
-            
-            <div class="product-rate-cover text-end">
-                <div class="product-rate d-inline-block">
-                    <div class="product-rating" style="width: 90%"></div>
-                </div>
-                <span class="font-small ml-5 text-muted"> (32 reviews)</span>
-            </div>
-        </div>
-    </div>
+{{--<div class="tab-pane fade" id="Vendor-info">--}}
+{{--    <div class="vendor-logo d-flex mb-30">--}}
+{{--        <img src="{{ (!empty($product->vendor->photo)) ? url('upload/vendor_images/'.$product->vendor->photo):url('upload/no_image.jpg') }}" alt="" />--}}
+{{--        <div class="vendor-name ml-15">--}}
+{{--        	@if($product->vendor_id == NULL)--}}
+{{--        	<h6>--}}
+{{--                <a href="vendor-details-2.html">Owner</a>--}}
+{{--            </h6>--}}
+{{--        	@else--}}
+{{--        	<h6>--}}
+{{--                <a href="vendor-details-2.html">{{ $product['vendor']['name'] }}</a>--}}
+{{--            </h6>--}}
+{{--        	@endif--}}
 
-    	@if($product->vendor_id == NULL)
-<ul class="contact-infor mb-50">
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>Owner</span></li>
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Contact Seller:</strong><span>Owner</span></li>
-    </ul>
-    	@else
-    	 <ul class="contact-infor mb-50">
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>{{ $product['vendor']['address'] }}</span></li>
-        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Contact Seller:</strong><span>{{ $product['vendor']['phone'] }}</span></li>
-    </ul>
+{{--            <div class="product-rate-cover text-end">--}}
+{{--                <div class="product-rate d-inline-block">--}}
+{{--                    <div class="product-rating" style="width: 90%"></div>--}}
+{{--                </div>--}}
+{{--                <span class="font-small ml-5 text-muted"> (32 reviews)</span>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-    	@endif
-   
-    @if($product->vendor_id == NULL)
-      <p>Owner Information</p>
-    @else
-      <p>{{ $product['vendor']['vendor_short_info'] }}</p>
-    @endif
-  
-</div>
+{{--    	@if($product->vendor_id == NULL)--}}
+{{--<ul class="contact-infor mb-50">--}}
+{{--        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>Owner</span></li>--}}
+{{--        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Contact Seller:</strong><span>Owner</span></li>--}}
+{{--    </ul>--}}
+{{--    	@else--}}
+{{--    	 <ul class="contact-infor mb-50">--}}
+{{--        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-location.svg') }}" alt="" /><strong>Address: </strong> <span>{{ $product['vendor']['address'] }}</span></li>--}}
+{{--        <li><img src="{{ asset('frontend/assets/imgs/theme/icons/icon-contact.svg') }}" alt="" /><strong>Contact Seller:</strong><span>{{ $product['vendor']['phone'] }}</span></li>--}}
+{{--    </ul>--}}
+
+{{--    	@endif--}}
+
+{{--    @if($product->vendor_id == NULL)--}}
+{{--      <p>Owner Information</p>--}}
+{{--    @else--}}
+{{--      <p>{{ $product['vendor']['vendor_short_info'] }}</p>--}}
+{{--    @endif--}}
+
+{{--</div>--}}
 
 
 <div class="tab-pane fade" id="Reviews">
@@ -362,7 +362,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
     <div class="comments-area">
         <div class="row">
             <div class="col-lg-8">
-                <h4 class="mb-30">Customer questions & answers</h4>
+                <h4 class="mb-30">Preguntas y respuestas de los clientes</h4>
                 <div class="comment-list">
 @php
 $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(5)->get();
@@ -372,7 +372,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
     @if($item->status == 0)
 
-    @else 
+    @else
 
     <div class="single-comment justify-content-between d-flex mb-30">
         <div class="user justify-content-between d-flex">
@@ -401,7 +401,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 @endif
                     </div>
                 </div>
-                <p class="mb-10">{{ $item->comment }} <a href="#" class="reply">Reply</a></p>
+                <p class="mb-10">{{ $item->comment }} <a href="#" class="reply">Responder</a></p>
             </div>
         </div>
     </div>
@@ -410,13 +410,13 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 
     @endforeach
-                  
-                 
+
+
                 </div>
             </div>
 
             <div class="col-lg-4">
-                <h4 class="mb-30">Customer reviews</h4>
+                <h4 class="mb-30">Comentarios de clientes</h4>
                 <div class="d-flex mb-30">
                     <div class="product-rate d-inline-block mr-15">
                         <div class="product-rating" style="width: 90%"></div>
@@ -443,7 +443,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
                     <span>1 star</span>
                     <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
                 </div>
-                <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
+{{--                <a href="#" class="font-xs text-muted">How are ratings calculated?</a>--}}
             </div>
         </div>
     </div>
@@ -454,14 +454,14 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
     <!--comment form-->
     <div class="comment-form">
-        <h4 class="mb-15">Add a review</h4>
+        <h4 class="mb-15">Agregar comentario</h4>
 
     @guest
-    <p> <b>For Add Product Review. You Need To Login First <a href="{{ route('login')}}">Login Here </a> </b></p>
+    <p> <b>Para añadir una opinión sobre un producto. Primero debe iniciar sesión <a href="{{ route('login')}}">Inicia aquí </a> </b></p>
 
-    @else 
+    @else
 
-        
+
         <div class="row">
             <div class="col-lg-8 col-md-12">
        <form class="form-contact comment_form" action="{{ route('store.review') }}" method="post" id="commentForm">
@@ -482,17 +482,17 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
         <thead>
             <tr>
                 <th class="cell-level">&nbsp;</th>
-                <th>1 star</th>
-                <th>2 star</th>
-                <th>3 star</th>
-                <th>4 star</th>
-                <th>5 star</th>
+                <th>1 estrella</th>
+                <th>2 estrellas</th>
+                <th>3 estrellas</th>
+                <th>4 estrellas</th>
+                <th>5 estrellas</th>
             </tr>
         </thead>
 
         <tbody>
             <tr>
-    <td class="cell-level">Quality</td>
+    <td class="cell-level">Calidad</td>
     <td><input type="radio" name="quality" class="radio-sm" value="1"></td>
     <td><input type="radio" name="quality" class="radio-sm" value="2"></td>
     <td><input type="radio" name="quality" class="radio-sm" value="3"></td>
@@ -509,14 +509,14 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
     <div class="col-12">
         <div class="form-group">
-            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
+            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Escribir comentario"></textarea>
         </div>
     </div>
-                        
-                         
+
+
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="button button-contactForm">Submit Review</button>
+                        <button type="submit" class="button button-contactForm">Enviar comentario</button>
                     </div>
                 </form>
             </div>
@@ -535,7 +535,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 
 <div class="row mt-60">
 <div class="col-12">
-<h2 class="section-title style-1 mb-30">Related products</h2>
+<h2 class="section-title style-1 mb-30">Productos relacionados</h2>
 </div>
 <div class="col-12">
 <div class="row related-products">
@@ -548,13 +548,13 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
             <div class="product-img product-img-zoom">
                 <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}" tabindex="0">
                     <img class="default-img" src="{{ asset( $product->product_thambnail ) }}" alt="" />
-                   
+
                 </a>
             </div>
             <div class="product-action-1">
                 <a aria-label="Quick view" class="action-btn small hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-search"></i></a>
-                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="shop-wishlist.html" tabindex="0"><i class="fi-rs-heart"></i></a>
-                <a aria-label="Compare" class="action-btn small hover-up" href="shop-compare.html" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+                <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="#" tabindex="0"><i class="fi-rs-heart"></i></a>
+                <a aria-label="Compare" class="action-btn small hover-up" href="#" tabindex="0"><i class="fi-rs-shuffle"></i></a>
             </div>
 
             	 @php
@@ -564,11 +564,11 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
     @endphp
             <div class="product-badges product-badges-position product-badges-mrg">
 
-            
+
 
 
                  @if($product->discount_price == NULL)
-                    <span class="new">New</span>
+                    <span class="new">Nuevo</span>
                     @else
                     <span class="hot"> {{ round($discount) }} %</span>
                     @endif
@@ -576,7 +576,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
             </div>
         </div>
         <div class="product-content-wrap">
-            <h2><a href="shop-product-right.html" tabindex="0">{{ $product->product_name }}</a></h2>
+            <h2><a href="#" tabindex="0">{{ $product->product_name }}</a></h2>
             <div class="rating-result" title="90%">
                 <span> </span>
             </div>
@@ -584,7 +584,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
             @if($product->discount_price == NULL)
                      <div class="product-price">
                         <span>${{ $product->selling_price }}</span>
-                       
+
                     </div>
 
                     @else
@@ -600,7 +600,7 @@ $reviews = App\Models\Review::where('product_id',$product->id)->latest()->limit(
 @endforeach
 
 
-  
+
 </div>
                             </div>
                         </div>
