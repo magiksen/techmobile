@@ -2,7 +2,7 @@
 @section('main')
 
 @section('title')
-   {{ $breadcat->category_name }} Category
+   {{ $breadcat->category_name }} Categoría
 @endsection
 
 
@@ -13,11 +13,11 @@
                         <div class="col-xl-3">
                             <h5 class="mb-15">{{ $breadcat->category_name }}</h5>
                             <div class="breadcrumb">
-                                <a href="index.html" rel="nofollow"><i class="fi-rs-home mr-5"></i>Home</a>
-                                <span></span> {{ $breadcat->category_name }} 
+                                <a href="{{ route('homepage') }}" rel="nofollow"><i class="fi-rs-home mr-5"></i>Inicio</a>
+                                <span></span> {{ $breadcat->category_name }}
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
@@ -27,13 +27,13 @@
                 <div class="col-lg-4-5">
                     <div class="shop-product-fillter">
                         <div class="totall-product">
- <p>We found <strong class="text-brand">{{ count($products) }}</strong> items for you!</p>
+ <p>Encontramos <strong class="text-brand">{{ count($products) }}</strong> artículos para ti!</p>
                         </div>
                         <div class="sort-by-product-area">
                             <div class="sort-by-cover mr-10">
                                 <div class="sort-by-product-wrap">
                                     <div class="sort-by">
-                                        <span><i class="fi-rs-apps"></i>Show:</span>
+                                        <span><i class="fi-rs-apps"></i>Mostrar:</span>
                                     </div>
                                     <div class="sort-by-dropdown-wrap">
                                         <span> 50 <i class="fi-rs-angle-small-down"></i></span>
@@ -45,26 +45,26 @@
                                         <li><a href="#">100</a></li>
                                         <li><a href="#">150</a></li>
                                         <li><a href="#">200</a></li>
-                                        <li><a href="#">All</a></li>
+                                        <li><a href="#">Todos</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="sort-by-cover">
                                 <div class="sort-by-product-wrap">
                                     <div class="sort-by">
-                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        <span><i class="fi-rs-apps-sort"></i>Filtrar por:</span>
                                     </div>
                                     <div class="sort-by-dropdown-wrap">
-                                        <span> Featured <i class="fi-rs-angle-small-down"></i></span>
+                                        <span> Destacado <i class="fi-rs-angle-small-down"></i></span>
                                     </div>
                                 </div>
                                 <div class="sort-by-dropdown">
                                     <ul>
-                                        <li><a class="active" href="#">Featured</a></li>
-                                        <li><a href="#">Price: Low to High</a></li>
-                                        <li><a href="#">Price: High to Low</a></li>
-                                        <li><a href="#">Release Date</a></li>
-                                        <li><a href="#">Avg. Rating</a></li>
+                                        <li><a class="active" href="#">Destacado</a></li>
+                                        <li><a href="#">Precio: De menor a mayor</a></li>
+                                        <li><a href="#">Precio: De mayor a menor</a></li>
+                                        <li><a href="#">Fecha</a></li>
+                                        <li><a href="#">Calificación</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -80,12 +80,12 @@
                 <div class="product-img product-img-zoom">
                     <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}">
                         <img class="default-img" src="{{ asset( $product->product_thambnail ) }}" alt="" />
-                        
+
                     </a>
                 </div>
                 <div class="product-action-1">
                     <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"  ><i class="fi-rs-heart"></i></a>
-                    
+
    <a aria-label="Compare" class="action-btn"  id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
 
    <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
@@ -101,12 +101,12 @@
                 <div class="product-badges product-badges-position product-badges-mrg">
 
                     @if($product->discount_price == NULL)
-                    <span class="new">New</span>
+                    <span class="new">Nuevo</span>
                     @else
                     <span class="hot"> {{ round($discount) }} %</span>
                     @endif
 
-                    
+
                 </div>
             </div>
             <div class="product-content-wrap">
@@ -122,12 +122,12 @@
                 </div>
                 <div>
                     @if($product->vendor_id == NULL)
-<span class="font-small text-muted">By <a href="vendor-details-1.html">Owner</a></span>
+<span class="font-small text-muted"><a href="#">Propio</a></span>
                     @else
-  <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $product['vendor']['name'] }}</a></span>
+  <span class="font-small text-muted"><a href="#">{{ $product['vendor']['name'] }}</a></span>
 
                     @endif
-                   
+
 
 
                 </div>
@@ -136,7 +136,7 @@
                     @if($product->discount_price == NULL)
                      <div class="product-price">
                         <span>${{ $product->selling_price }}</span>
-                       
+
                     </div>
 
                     @else
@@ -147,22 +147,22 @@
                     @endif
 
 
-                     
+
                     <div class="add-cart">
-                        <a class="add" href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><i class="fi-rs-shopping-cart mr-5"></i>Details </a>
+                        <a class="add" href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><i class="fi-rs-shopping-cart mr-5"></i>Detalles </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div> 
+    </div>
     <!--end product card-->
     @endforeach
 
 
 
 
-                       
-                        
+
+
                     </div>
                     <!--product grid-->
                     <div class="pagination-area mt-20 mb-20">
@@ -182,14 +182,14 @@
                             </ul>
                         </nav>
                     </div>
-                    
+
                     <!--End Deals-->
 
-                    
+
                 </div>
                 <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
                     <div class="sidebar-widget widget-category-2 mb-30">
-                        <h5 class="section-title style-1 mb-30">Category</h5>
+                        <h5 class="section-title style-1 mb-30">Categoría</h5>
                         <ul>
 
     	@foreach($categories as $category)
@@ -204,15 +204,15 @@ $products = App\Models\Product::where('category_id',$category->id)->get();
         <li>
             <a href="shop-grid-right.html"> <img src=" {{ asset($category->category_image) }} " alt="" />{{ $category->category_name }}</a><span class="count">{{ count($products) }}</span>
         </li>
-        @endforeach 
+        @endforeach
                         </ul>
                     </div>
                     <!-- Fillter By Price -->
-                 
+
                     <!-- Product sidebar Widget -->
                     <div class="sidebar-widget product-sidebar mb-30 p-30 bg-grey border-radius-10">
-                        <h5 class="section-title style-1 mb-30">New products</h5>
-                        
+                        <h5 class="section-title style-1 mb-30">Nuevos productos</h5>
+
         @foreach($newProduct as $product)
         <div class="single-post clearfix">
             <div class="image">
@@ -226,7 +226,7 @@ $products = App\Models\Product::where('category_id',$category->id)->get();
                    @else
                    <p class="price mb-0 mt-5">${{ $product->discount_price }}</p>
                    @endif
-                
+
                 <div class="product-rate">
                     <div class="product-rating" style="width: 90%"></div>
                 </div>
@@ -235,9 +235,9 @@ $products = App\Models\Product::where('category_id',$category->id)->get();
       @endforeach
 
 
-                       
+
                     </div>
-                   
+
 
                 </div>
             </div>
