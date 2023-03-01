@@ -6643,7 +6643,7 @@ h6.post-title {
 
 .invoice-1 .invoice-info-buttom .table .invoice-1 .invoice-info-buttom .table tr,
 .table tr {
-  border: 1px solid #e9ecef;
+  border: 1px solid #fff;
 }
 
 .table > :not(caption) > * > * {

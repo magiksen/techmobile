@@ -40,7 +40,7 @@ class CartController extends Controller
                 ],
             ]);
 
-   return response()->json(['success' => 'Successfully Added on Your Cart' ]);
+   return response()->json(['success' => 'Agreado al carrito con éxito' ]);
 
         }else{
 
@@ -59,7 +59,7 @@ class CartController extends Controller
                 ],
             ]);
 
-   return response()->json(['success' => 'Successfully Added on Your Cart' ]);
+   return response()->json(['success' => 'Agreado al carrito con éxito' ]);
 
         }
 
@@ -91,7 +91,7 @@ class CartController extends Controller
                 ],
             ]);
 
-   return response()->json(['success' => 'Successfully Added on Your Cart' ]);
+   return response()->json(['success' => 'Agreado al carrito con éxito' ]);
 
         }else{
 
@@ -110,7 +110,7 @@ class CartController extends Controller
                 ],
             ]);
 
-   return response()->json(['success' => 'Successfully Added on Your Cart' ]);
+   return response()->json(['success' => 'Agreado al carrito con éxito' ]);
 
         }
 
