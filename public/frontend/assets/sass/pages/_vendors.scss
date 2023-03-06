@@ -2,8 +2,8 @@
     position: relative;
     background-color: #fff;
 	border: 1px solid $border-color;
-	border-radius: 15px;	
-	overflow: hidden;	
+	border-radius: 15px;
+	overflow: hidden;
 	@include transistion-duration-2s;
 
 	&:hover {
@@ -32,7 +32,7 @@
             display: inline-block;
             padding: 6px 20px 6px 20px;
             border-radius: 4px;
-            background-color: #DEF9EC;
+            background-color: #FCF2E4;
             font-size: 14px;
             font-weight: 700;
             color: $color-brand;
@@ -78,7 +78,7 @@
                 display: inline-block;
                 padding: 6px 20px 6px 20px;
                 border-radius: 4px;
-                background-color: #DEF9EC;
+                background-color: #FCF2E4;
                 font-size: 14px;
                 font-weight: 700;
                 color: $color-brand;

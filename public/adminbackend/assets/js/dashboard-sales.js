@@ -1,8 +1,8 @@
 $(function () {
 	"use strict";
-	
-	
-	
+
+
+
 	// chart 1
 	var options = {
 		series: [{
@@ -104,7 +104,7 @@ $(function () {
 				left: 14,
 				blur: 4,
 				opacity: 0.12,
-				color: '#0d6efd',
+				color: '#FFAD26',
 			},
 			sparkline: {
 				enabled: true
@@ -112,7 +112,7 @@ $(function () {
 		},
 		markers: {
 			size: 0,
-			colors: ["#0d6efd"],
+			colors: ["#FFAD26"],
 			strokeColors: "#fff",
 			strokeWidth: 2,
 			hover: {
@@ -134,7 +134,7 @@ $(function () {
 			width: 2.4,
 			curve: 'smooth'
 		},
-		colors: ["#0d6efd"],
+		colors: ["#FFAD26"],
 		xaxis: {
 			categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 		},
@@ -323,9 +323,9 @@ $(function () {
 	};
 	var chart = new ApexCharts(document.querySelector("#chart4"), options);
 	chart.render();
-	
-	
-	
+
+
+
 	// chart 5
 	Highcharts.chart('chart5', {
 		chart: {
@@ -342,7 +342,7 @@ $(function () {
 		title: {
 			text: 'Sales and Traffic Annual Report'
 		},
-		
+
 		xAxis: {
 			allowDecimals: false,
 			type: 'datetime',
@@ -408,8 +408,8 @@ $(function () {
 			]
 		}]
 	});
-	
-	
+
+
 	// chart 6
 	var options = {
 		chart: {
@@ -479,14 +479,14 @@ $(function () {
 				shade: 'light',
 				type: 'horizontal',
 				shadeIntensity: 0.5,
-				gradientToColors: ['#0d6efd'],
+				gradientToColors: ['#FFAD26'],
 				inverseColors: false,
 				opacityFrom: 1,
 				opacityTo: 1,
 				stops: [0, 100]
 			}
 		},
-		colors: ["#0d6efd"],
+		colors: ["#FFAD26"],
 		series: [68],
 		stroke: {
 			lineCap: 'round',
@@ -496,9 +496,9 @@ $(function () {
 	}
 	var chart = new ApexCharts(document.querySelector("#chart6"), options);
 	chart.render();
-	
-	
-	
+
+
+
 	// chart 7
 	Highcharts.chart('chart7', {
 		chart: {
@@ -582,7 +582,7 @@ var options = {
         toolbar: {
             show: false
 		},
-		
+
     },
     plotOptions: {
         bar: {
@@ -709,7 +709,7 @@ chart.render();
 
 
    // world map
-	
+
 	jQuery('#geographic-map-3').vectorMap({
 		map: 'world_mill_en',
 		backgroundColor: 'transparent',
@@ -742,7 +742,7 @@ chart.render();
 		series: {
 			regions: [{
 				values: {
-					IN: '#0d6efd',
+					IN: '#FFAD26',
 					US: '#15b70a',
 					RU: '#f41127',
 					AU: '#ffb207'
@@ -760,12 +760,12 @@ chart.render();
 			alert(message);
 		}
 	});
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	});
