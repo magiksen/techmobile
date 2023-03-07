@@ -35,11 +35,11 @@
                 </div>
                 <div class="product-action-1">
 
- <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"  ><i class="fi-rs-heart"></i></a>
+ <a aria-label="Lista de deseos" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"  ><i class="fi-rs-heart"></i></a>
 
-   <a aria-label="Compare" class="action-btn"  id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
+   <a aria-label="Comparar" class="action-btn"  id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
 
-   <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
+   <a aria-label="Vista rápida" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
 
                 </div>
 
@@ -123,7 +123,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
 
 
                     <div class="add-cart">
-                        <a class="add" href="shop-cart.html"><i class="fi-rs-shopping-cart mr-5"></i>Agregar</a>
+                        <a class="add" aria-label="Quick view" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-shopping-cart mr-5"></i>Agregar</a>
                     </div>
                 </div>
             </div>
@@ -161,10 +161,10 @@ $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderB
                     </a>
                 </div>
                 <div class="product-action-1">
-                    <a aria-label="Add To Wishlist" class="action-btn" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                    <a aria-label="Compare" class="action-btn" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
+                    <a aria-label="Agregar a la lista de deseos" class="action-btn" href="#"><i class="fi-rs-heart"></i></a>
+                    <a aria-label="Comparar" class="action-btn" href="#"><i class="fi-rs-shuffle"></i></a>
 
-  <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
+  <a aria-label="Vista previa" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-eye"></i></a>
                 </div>
 
     @php
@@ -177,7 +177,7 @@ $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderB
                 <div class="product-badges product-badges-position product-badges-mrg">
 
                     @if($product->discount_price == NULL)
-                    <span class="new">New</span>
+                    <span class="new">Nuevo</span>
                     @else
                     <span class="hot"> {{ round($discount) }} %</span>
                     @endif
@@ -198,9 +198,9 @@ $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderB
                 </div>
                 <div>
                     @if($product->vendor_id == NULL)
-<span class="font-small text-muted">By <a href="vendor-details-1.html">Owner</a></span>
+<span class="font-small text-muted"><a href="#">Propio</a></span>
                     @else
-  <span class="font-small text-muted">By <a href="vendor-details-1.html">{{ $product['vendor']['name'] }}</a></span>
+  <span class="font-small text-muted"><a href="#">{{ $product['vendor']['name'] }}</a></span>
 
                     @endif
 
@@ -235,7 +235,7 @@ $catwiseProduct = App\Models\Product::where('category_id',$category->id)->orderB
 
         @empty
 
-        <h5 class="text-danger"> No Product Found </h5>
+        <h5 class="text-danger"> No se encontraron productos</h5>
 
 
         @endforelse

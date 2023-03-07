@@ -209,7 +209,8 @@ li.hr span {
     background-color: #fff;
     border-radius: 5px;
     border: 1px solid #FFA52A;
-    width: 60%;
+    width: 50%;
+    text-align: center;
 }
 
 

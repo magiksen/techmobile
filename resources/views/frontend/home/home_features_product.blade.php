@@ -16,7 +16,7 @@ $featured = App\Models\Product::where('featured',1)->orderBy('id','DESC')->limit
                         <div class="banner-img style-2">
                             <div class="banner-text">
                                 <h2 class="mb-100">Tecnología en tus manos</h2>
-                                <a href="shop-grid-right.html" class="btn btn-xs">Comprar ahora <i class="fi-rs-arrow-small-right"></i></a>
+                                <a href="#" class="btn btn-xs">Comprar ahora <i class="fi-rs-arrow-small-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,11 @@ $featured = App\Models\Product::where('featured',1)->orderBy('id','DESC')->limit
                 </div>
                 <div class="product-action-1">
 
-                    <a aria-label="Add To Wishlist" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"  ><i class="fi-rs-heart"></i></a>
+                    <a aria-label="Lista de deseos" class="action-btn" id="{{ $product->id }}" onclick="addToWishList(this.id)"  ><i class="fi-rs-heart"></i></a>
 
-   <a aria-label="Compare" class="action-btn"  id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
+   <a aria-label="Comparar" class="action-btn"  id="{{ $product->id }}" onclick="addToCompare(this.id)"><i class="fi-rs-shuffle"></i></a>
 
-   <a aria-label="Quick view" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
+   <a aria-label="Vista rápida" class="action-btn" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)" ><i class="fi-rs-eye"></i></a>
                 </div>
 
                  @php
@@ -55,7 +55,7 @@ $featured = App\Models\Product::where('featured',1)->orderBy('id','DESC')->limit
 
                 <div class="product-badges product-badges-position product-badges-mrg">
                      @if($product->discount_price == NULL)
-                    <span class="new">New</span>
+                    <span class="new">Nuevo</span>
                     @else
                     <span class="hot"> {{ round($discount) }} %</span>
                     @endif
@@ -112,7 +112,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
                     </div>
 
                 </div>
-                <a href="#" class="btn w-100 hover-up"><i class="fi-rs-shopping-cart mr-5"></i>Agregar al carrito</a>
+                <a class="btn w-100 hover-up" aria-label="Quick view" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-shopping-cart mr-5"></i><i class="fi-rs-shopping-cart mr-5"></i>Agregar al carrito</a>
             </div>
         </div>
         <!--End product Wrap-->
