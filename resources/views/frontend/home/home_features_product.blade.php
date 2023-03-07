@@ -112,7 +112,7 @@ $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1
                     </div>
 
                 </div>
-                <a class="btn w-100 hover-up" aria-label="Quick view" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-shopping-cart mr-5"></i><i class="fi-rs-shopping-cart mr-5"></i>Agregar al carrito</a>
+                <a class="btn w-100 hover-up" aria-label="Quick view" data-bs-toggle="modal" data-bs-target="#quickViewModal" id="{{ $product->id }}" onclick="productView(this.id)"><i class="fi-rs-shopping-cart mr-5"></i>Agregar al carrito</a>
             </div>
         </div>
         <!--End product Wrap-->
