@@ -22,27 +22,27 @@ class CompareController extends Controller
                 'created_at' => Carbon::now(),
 
                ]);
-               return response()->json(['success' => 'Successfully Added On Your Compare' ]);
+               return response()->json(['success' => 'Agregado a la lista de comparación' ]);
             } else{
-                return response()->json(['error' => 'This Product Has Already on Your Compare' ]);
+                return response()->json(['error' => 'Ya esta en la lista de comparación' ]);
 
-            } 
+            }
 
         }else{
-            return response()->json(['error' => 'At First Login Your Account' ]);
+            return response()->json(['error' => 'Inicia sesión en tu cuenta' ]);
         }
 
-    } // End Method 
+    } // End Method
 
 
     public function AllCompare(){
         return view('frontend.compare.view_compare');
-    }// End Method 
+    }// End Method
 
 
      public function GetCompareProduct(){
 
-        $compare = Compare::with('product')->where('user_id',Auth::id())->latest()->get(); 
+        $compare = Compare::with('product')->where('user_id',Auth::id())->latest()->get();
 
         return response()->json($compare);
 
@@ -51,8 +51,7 @@ class CompareController extends Controller
     public function CompareRemove($id){
 
         Compare::where('user_id',Auth::id())->where('id',$id)->delete();
-     return response()->json(['success' => 'Successfully Product Remove' ]);
+     return response()->json(['success' => 'Eliminado correctamente de tu lista de comparación' ]);
     }// End Method
 
 }
- 
