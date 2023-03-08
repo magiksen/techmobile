@@ -1,7 +1,7 @@
 @extends('frontend.master_dashboard')
 @section('main')
 @section('title')
-   Wishlist
+    Lista de deseos
 @endsection
 <div class="page-header breadcrumb-wrap">
             <div class="container">

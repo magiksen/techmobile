@@ -172,12 +172,12 @@
             if (data.product.product_qty > 0) {
                 $('#aviable').text('');
                 $('#stockout').text('');
-                $('#aviable').text('aviable');
+                $('#aviable').text('disponible');
 
             }else{
                 $('#aviable').text('');
                 $('#stockout').text('');
-                $('#stockout').text('stockout');
+                $('#stockout').text('no disponible');
             }
             ///End Start Stock Option
 
