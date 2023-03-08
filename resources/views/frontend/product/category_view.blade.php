@@ -27,48 +27,48 @@
                 <div class="col-lg-4-5">
                     <div class="shop-product-fillter">
                         <div class="totall-product">
- <p>Encontramos <strong class="text-brand">{{ count($products) }}</strong> artículos para ti!</p>
+                        <p>Encontramos <strong class="text-brand">{{ count($products) }}</strong> artículos para ti!</p>
                         </div>
-                        <div class="sort-by-product-area">
-                            <div class="sort-by-cover mr-10">
-                                <div class="sort-by-product-wrap">
-                                    <div class="sort-by">
-                                        <span><i class="fi-rs-apps"></i>Mostrar:</span>
-                                    </div>
-                                    <div class="sort-by-dropdown-wrap">
-                                        <span> 50 <i class="fi-rs-angle-small-down"></i></span>
-                                    </div>
-                                </div>
-                                <div class="sort-by-dropdown">
-                                    <ul>
-                                        <li><a class="active" href="#">50</a></li>
-                                        <li><a href="#">100</a></li>
-                                        <li><a href="#">150</a></li>
-                                        <li><a href="#">200</a></li>
-                                        <li><a href="#">Todos</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="sort-by-cover">
-                                <div class="sort-by-product-wrap">
-                                    <div class="sort-by">
-                                        <span><i class="fi-rs-apps-sort"></i>Filtrar por:</span>
-                                    </div>
-                                    <div class="sort-by-dropdown-wrap">
-                                        <span> Destacado <i class="fi-rs-angle-small-down"></i></span>
-                                    </div>
-                                </div>
-                                <div class="sort-by-dropdown">
-                                    <ul>
-                                        <li><a class="active" href="#">Destacado</a></li>
-                                        <li><a href="#">Precio: De menor a mayor</a></li>
-                                        <li><a href="#">Precio: De mayor a menor</a></li>
-                                        <li><a href="#">Fecha</a></li>
-                                        <li><a href="#">Calificación</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="sort-by-product-area">--}}
+{{--                            <div class="sort-by-cover mr-10">--}}
+{{--                                <div class="sort-by-product-wrap">--}}
+{{--                                    <div class="sort-by">--}}
+{{--                                        <span><i class="fi-rs-apps"></i>Mostrar:</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="sort-by-dropdown-wrap">--}}
+{{--                                        <span> 50 <i class="fi-rs-angle-small-down"></i></span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="sort-by-dropdown">--}}
+{{--                                    <ul>--}}
+{{--                                        <li><a class="active" href="#">50</a></li>--}}
+{{--                                        <li><a href="#">100</a></li>--}}
+{{--                                        <li><a href="#">150</a></li>--}}
+{{--                                        <li><a href="#">200</a></li>--}}
+{{--                                        <li><a href="#">Todos</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="sort-by-cover">--}}
+{{--                                <div class="sort-by-product-wrap">--}}
+{{--                                    <div class="sort-by">--}}
+{{--                                        <span><i class="fi-rs-apps-sort"></i>Filtrar por:</span>--}}
+{{--                                    </div>--}}
+{{--                                    <div class="sort-by-dropdown-wrap">--}}
+{{--                                        <span> Destacado <i class="fi-rs-angle-small-down"></i></span>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="sort-by-dropdown">--}}
+{{--                                    <ul>--}}
+{{--                                        <li><a class="active" href="#">Destacado</a></li>--}}
+{{--                                        <li><a href="#">Precio: De menor a mayor</a></li>--}}
+{{--                                        <li><a href="#">Precio: De mayor a menor</a></li>--}}
+{{--                                        <li><a href="#">Fecha</a></li>--}}
+{{--                                        <li><a href="#">Calificación</a></li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     <div class="row product-grid">
 
@@ -111,21 +111,40 @@
             </div>
             <div class="product-content-wrap">
                 <div class="product-category">
-                    <a href="shop-grid-right.html">{{ $product['category']['category_name'] }}</a>
+                    <a href="{{ url('product/category/'.$product->category_id.'/'.$product['category']['category_slug']) }}">{{ $product['category']['category_name'] }}</a>
                 </div>
                 <h2><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"> {{ $product->product_name }} </a></h2>
+                @php
+
+                    $reviewcount = App\Models\Review::where('product_id',$product->id)->where('status',1)->latest()->get();
+
+                    $avarage = App\Models\Review::where('product_id',$product->id)->where('status',1)->avg('rating');
+                @endphp
+
                 <div class="product-rate-cover">
                     <div class="product-rate d-inline-block">
-                        <div class="product-rating" style="width: 90%"></div>
+
+                        @if($avarage == 0)
+
+                        @elseif($avarage == 1 || $avarage < 2)
+                            <div class="product-rating" style="width: 20%"></div>
+                        @elseif($avarage == 2 || $avarage < 3)
+                            <div class="product-rating" style="width: 40%"></div>
+                        @elseif($avarage == 3 || $avarage < 4)
+                            <div class="product-rating" style="width: 60%"></div>
+                        @elseif($avarage == 4 || $avarage < 5)
+                            <div class="product-rating" style="width: 80%"></div>
+                        @elseif($avarage == 5 || $avarage < 5)
+                            <div class="product-rating" style="width: 100%"></div>
+                        @endif
                     </div>
-                    <span class="font-small ml-5 text-muted"> (4.0)</span>
+                    <span class="font-small ml-5 text-muted"> ({{count($reviewcount)}})</span>
                 </div>
                 <div>
                     @if($product->vendor_id == NULL)
-<span class="font-small text-muted"><a href="#">Propio</a></span>
+                    <span class="font-small text-muted"><a href="#">Propio</a></span>
                     @else
-  <span class="font-small text-muted"><a href="#">{{ $product['vendor']['name'] }}</a></span>
-
+                    <span class="font-small text-muted"><a href="{{ route('vendor.details',$product->vendor_id) }}">{{ $product['vendor']['name'] }}</a></span>
                     @endif
 
 
@@ -149,7 +168,7 @@
 
 
                     <div class="add-cart">
-                        <a class="add" href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><i class="fi-rs-shopping-cart mr-5"></i>Detalles </a>
+                        <a class="add" href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><i class="fi-rs-shopping-cart mr-5"></i>Detalles</a>
                     </div>
                 </div>
             </div>
@@ -164,24 +183,9 @@
 
 
                     </div>
+
                     <!--product grid-->
-                    <div class="pagination-area mt-20 mb-20">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-start">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fi-rs-arrow-small-left"></i></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fi-rs-arrow-small-right"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
+                    {{ $products->links('frontend.body.pagination') }}
 
                     <!--End Deals-->
 
@@ -194,15 +198,15 @@
 
     	@foreach($categories as $category)
 
-@php
+        @php
 
-$products = App\Models\Product::where('category_id',$category->id)->get();
+        $products = App\Models\Product::where('category_id',$category->id)->get();
 
-@endphp
+        @endphp
 
 
         <li>
-            <a href="shop-grid-right.html"> <img src=" {{ asset($category->category_image) }} " alt="" />{{ $category->category_name }}</a><span class="count">{{ count($products) }}</span>
+            <a href="{{ url('product/category/'.$category->id.'/'.$category->category_slug) }}"> <img src=" {{ asset($category->category_image) }} " alt="" />{{ $category->category_name }}</a><span class="count">{{ count($products) }}</span>
         </li>
         @endforeach
                         </ul>

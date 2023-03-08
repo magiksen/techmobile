@@ -79,7 +79,7 @@ class IndexController extends Controller
 
 
      public function CatWiseProduct(Request $request,$id,$slug){
-      $products = Product::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->get();
+      $products = Product::where('status',1)->where('category_id',$id)->orderBy('id','DESC')->paginate(10);
       $categories = Category::orderBy('category_name','ASC')->get();
 
       $breadcat = Category::where('id',$id)->first();

@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
           $notification = array(
-            'message' => 'Login Successfully',
+            'message' => 'Inicio de sesión correcto',
             'alert-type' => 'success'
         );
 
@@ -48,7 +48,7 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended($url)->with($notification);
     }
- 
+
     /**
      * Destroy an authenticated session.
      *
