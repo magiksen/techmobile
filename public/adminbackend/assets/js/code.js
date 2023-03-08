@@ -3,25 +3,25 @@ $(function(){
         e.preventDefault();
         var link = $(this).attr("href");
 
-   
+
                   Swal.fire({
-                    title: 'Are you sure?',
-                    text: "Delete This Data?",
+                    title: 'Estas seguro?',
+                    text: "Eliminar estos datos?",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, delete it!'
+                    confirmButtonText: 'Si, eliminalos!'
                   }).then((result) => {
                     if (result.isConfirmed) {
                       window.location.href = link
                       Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
+                        'Eliminado!',
+                        'Tu archivo ha sido eliminado.',
                         'success'
                       )
                     }
-                  }) 
+                  })
 
 
     });
@@ -29,13 +29,13 @@ $(function(){
   });
 
 
- /// Confirm Order 
+ /// Confirm Order
 $(function(){
     $(document).on('click','#confirm',function(e){
         e.preventDefault();
         var link = $(this).attr("href");
 
-   
+
                   Swal.fire({
                     title: 'Are you sure to Confirm?',
                     text: "Once Confirm, You will not be able to pending again?",
@@ -53,22 +53,22 @@ $(function(){
                         'success'
                       )
                     }
-                  }) 
+                  })
 
 
     });
 
   });
- /// Eend Confirm Order 
+ /// Eend Confirm Order
 
 
- /// Processing Order 
+ /// Processing Order
 $(function(){
     $(document).on('click','#processing',function(e){
         e.preventDefault();
         var link = $(this).attr("href");
 
-   
+
                   Swal.fire({
                     title: 'Are you sure to Processing?',
                     text: "Once Processing, You will not be able to pending again?",
@@ -86,22 +86,22 @@ $(function(){
                         'success'
                       )
                     }
-                  }) 
+                  })
 
 
     });
 
   });
- /// Eend Processing Order 
+ /// Eend Processing Order
 
 
- /// Deliverd Order 
+ /// Deliverd Order
 $(function(){
     $(document).on('click','#delivered',function(e){
         e.preventDefault();
         var link = $(this).attr("href");
 
-   
+
                   Swal.fire({
                     title: 'Are you sure to Delivered?',
                     text: "Once Delivered, You will not be able to pending again?",
@@ -119,22 +119,22 @@ $(function(){
                         'success'
                       )
                     }
-                  }) 
+                  })
 
 
     });
 
   });
- /// End Deliverd Order 
+ /// End Deliverd Order
 
 
-  /// Return Approved Order 
+  /// Return Approved Order
 $(function(){
     $(document).on('click','#approved',function(e){
         e.preventDefault();
         var link = $(this).attr("href");
 
-   
+
                   Swal.fire({
                     title: 'Are you sure to Approved?',
                     text: "Return Order Approved",
@@ -152,10 +152,10 @@ $(function(){
                         'success'
                       )
                     }
-                  }) 
+                  })
 
 
     });
 
   });
- /// End Deliverd Order 
+ /// End Deliverd Order
