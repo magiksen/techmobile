@@ -133,7 +133,7 @@
         <td align="center">{{ $item->qty }}</td>
 
          @if($item->vendor_id == NULL)
-         <td align="center">Owner</td>
+         <td align="center">Propio</td>
           @else
           <td align="center">{{ $item->product->vendor->name }}</td>
           @endif
